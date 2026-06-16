@@ -1,0 +1,133 @@
+{
+  "experiment": "c4_ladder_per_model",
+  "per_model": [
+    {
+      "model": "gpt-oss:20b",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.8387096774193549,
+      "bare_f1": 0.9122807017543859,
+      "ar_p": 1.0,
+      "ar_f1": 1.0,
+      "bare_beats_ce": true,
+      "ar_beats_ce": true,
+      "ladder_holds": true
+    },
+    {
+      "model": "gpt-oss:120b",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.896551724137931,
+      "bare_f1": 0.9454545454545454,
+      "ar_p": 1.0,
+      "ar_f1": 1.0,
+      "bare_beats_ce": true,
+      "ar_beats_ce": true,
+      "ladder_holds": true
+    },
+    {
+      "model": "gemma3:4b",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.9629629629629629,
+      "bare_f1": 0.9811320754716981,
+      "ar_p": 0.5098039215686274,
+      "ar_f1": 0.6753246753246753,
+      "bare_beats_ce": true,
+      "ar_beats_ce": false,
+      "ladder_holds": false
+    },
+    {
+      "model": "gemma3:12b",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.7647058823529411,
+      "bare_f1": 0.8666666666666666,
+      "ar_p": 0.6341463414634146,
+      "ar_f1": 0.7761194029850745,
+      "bare_beats_ce": true,
+      "ar_beats_ce": false,
+      "ladder_holds": false
+    },
+    {
+      "model": "gemma3:27b",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.8333333333333334,
+      "bare_f1": 0.8928571428571429,
+      "ar_p": 0.8666666666666667,
+      "ar_f1": 0.9285714285714286,
+      "bare_beats_ce": true,
+      "ar_beats_ce": true,
+      "ladder_holds": true
+    },
+    {
+      "model": "qwen3-next:80b",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.9285714285714286,
+      "bare_f1": 0.962962962962963,
+      "ar_p": 1.0,
+      "ar_f1": 1.0,
+      "bare_beats_ce": true,
+      "ar_beats_ce": true,
+      "ladder_holds": true
+    },
+    {
+      "model": "deepseek-v3.1:671b",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.8387096774193549,
+      "bare_f1": 0.9122807017543859,
+      "ar_p": 0.8666666666666667,
+      "ar_f1": 0.9285714285714286,
+      "bare_beats_ce": true,
+      "ar_beats_ce": true,
+      "ladder_holds": true
+    },
+    {
+      "model": "glm-4.6",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.8387096774193549,
+      "bare_f1": 0.9122807017543859,
+      "ar_p": 1.0,
+      "ar_f1": 1.0,
+      "bare_beats_ce": true,
+      "ar_beats_ce": true,
+      "ladder_holds": true
+    },
+    {
+      "model": "ministral-3:8b",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.7027027027027027,
+      "bare_f1": 0.8253968253968255,
+      "ar_p": 0.7428571428571429,
+      "ar_f1": 0.8524590163934427,
+      "bare_beats_ce": true,
+      "ar_beats_ce": true,
+      "ladder_holds": true
+    },
+    {
+      "model": "nemotron-3-nano:30b",
+      "cross_encoder_p": 0.6842105263157895,
+      "cross_encoder_f1": 0.8125000000000001,
+      "bare_p": 0.8666666666666667,
+      "bare_f1": 0.9285714285714286,
+      "ar_p": 0.9629629629629629,
+      "ar_f1": 0.9811320754716981,
+      "bare_beats_ce": true,
+      "ar_beats_ce": true,
+      "ladder_holds": true
+    }
+  ],
+  "summary": {
+    "n_models": 10,
+    "bare_beats_ce": 10,
+    "ar_beats_ce": 8,
+    "ladder_holds": 8,
+    "cross_encoder_precision": 0.6842105263157895,
+    "cross_encoder_f1": 0.8125000000000001
+  }
+}

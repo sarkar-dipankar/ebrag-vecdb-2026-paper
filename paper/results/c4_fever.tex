@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+Detector & Precision (95\% CI) & Recall (95\% CI) & F1 \\
+\midrule
+cross\_encoder\_nli & 0.91 [0.82,0.98] & 0.80 [0.68,0.91] & 0.85 \\
+llm\_bare & 1.00 [1.00,1.00] & 0.72 [0.59,0.84] & 0.84 \\
+llm\_answer\_relevant & 1.00 [1.00,1.00] & 0.68 [0.53,0.81] & 0.81 \\
+\bottomrule
+\end{tabular}
+\caption{External validation on real human-labelled FEVER pairs
+($n=100$; \texttt{copenlu/fever\_gold\_evidence}). On short claim--evidence NLI, the
+cross-encoder's native distribution, it is competitive; LLM judges retain perfect precision
+(no false positives on real data) but are more conservative on recall.}
+\label{tab:fever}
+\end{table}

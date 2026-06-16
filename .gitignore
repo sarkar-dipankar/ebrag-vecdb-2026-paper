@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+
+# Test/coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# LaTeX build
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+
+# Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store

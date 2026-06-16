@@ -1,0 +1,28 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lcccc}
+\toprule
+LLM model & cross-enc P & LLM-bare P & LLM-ar P & ladder \\
+\midrule
+\texttt{gpt-oss:20b} & 0.68 & 0.84 & 1.00 & \checkmark \\
+\texttt{gpt-oss:120b} & 0.68 & 0.90 & 1.00 & \checkmark \\
+\texttt{gemma3:4b} & 0.68 & 0.96 & 0.51 & $\times$ \\
+\texttt{gemma3:12b} & 0.68 & 0.76 & 0.63 & $\times$ \\
+\texttt{gemma3:27b} & 0.68 & 0.83 & 0.87 & \checkmark \\
+\texttt{qwen3-next:80b} & 0.68 & 0.93 & 1.00 & \checkmark \\
+\texttt{deepseek-v3.1:671b} & 0.68 & 0.84 & 0.87 & \checkmark \\
+\texttt{glm-4.6} & 0.68 & 0.84 & 1.00 & \checkmark \\
+\texttt{ministral-3:8b} & 0.68 & 0.70 & 0.74 & \checkmark \\
+\texttt{nemotron-3-nano:30b} & 0.68 & 0.87 & 0.96 & \checkmark \\
+\bottomrule
+\end{tabular}
+\caption{Per-model ladder against the fixed cross-encoder reference
+(DeBERTa-MNLI, $P=0.68$ on $n=63$). Bare LLM judging beats the cross-encoder for
+\textbf{10/10} models; answer-relevance beats it for
+\textbf{8/10}; the full ladder
+(answer-rel $\geq$ bare $\geq$ cross-enc) holds for 8/10.
+The two small Gemma regressors drop \emph{below} the cross-encoder under answer-relevance,
+making them the only models where a cross-encoder would beat the LLM judge.}
+\label{tab:ladder_per_model}
+\end{table*}

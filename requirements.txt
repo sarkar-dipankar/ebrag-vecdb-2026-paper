@@ -1,0 +1,26 @@
+# Runtime dependencies for the C4 VecDB@VLDB 2026 artefacts.
+# Pin major versions to match the environment the paper was run in.
+
+# Detector backends
+torch>=2.1
+transformers>=4.40
+sentence-transformers>=2.7
+numpy>=1.26
+
+# Vector index (small-corpus path uses exact cosine over numpy)
+usearch>=2.9
+
+# LLM-as-judge client (Ollama Cloud uses the OpenAI-compatible chat API)
+openai>=1.30
+
+# Data
+datasets>=2.19          # copenlu/fever_gold_evidence
+rank_bm25>=0.2          # sparse retrieval baseline
+
+# Config + logging
+pydantic>=2.6
+pydantic-settings>=2.2
+structlog>=24.1
+
+# Tests
+pytest>=8.0

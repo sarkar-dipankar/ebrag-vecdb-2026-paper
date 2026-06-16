@@ -1,0 +1,387 @@
+{
+  "experiment": "c4_prompt_robustness",
+  "models": [
+    "gemma3:4b",
+    "gemma3:12b",
+    "gpt-oss:20b"
+  ],
+  "variants": [
+    "json",
+    "plain",
+    "fewshot"
+  ],
+  "n_probes": 63,
+  "by_model": {
+    "gemma3:4b": {
+      "json": {
+        "metrics": {
+          "n": 63,
+          "precision": 0.5098039215686274,
+          "recall": 1.0,
+          "f1": 0.6753246753246753,
+          "confusion": {
+            "tp": 26,
+            "fp": 25,
+            "fn": 0,
+            "tn": 12
+          },
+          "per_category_accuracy": {
+            "agreement": 0.875,
+            "explicit": 1.0,
+            "implicit": 1.0,
+            "negation_agreement": 0.0,
+            "numeric": 1.0,
+            "sense_trap": 0.0,
+            "temporal": 1.0,
+            "topic_shift": 0.625,
+            "unit_agreement": 0.0
+          },
+          "topic_shift_false_positive_rate": 0.375,
+          "subtle_conflict_false_negative_rate": 0.0
+        },
+        "sense_trap_fp_samples": [
+          {
+            "premise": "Paris is the capital of France.",
+            "hypothesis": "Paris is a small town in Lamar County, Texas.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 0.95, \"rationale\": \"Passage A states Paris is the capital of France, while Passage B describes it as a town in Texas, presenting conflicting information.\"}"
+          },
+          {
+            "premise": "Mercury is the closest planet to the Sun.",
+            "hypothesis": "Mercury is a chemical element with the symbol Hg.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 0.95, \"rationale\": \"Passage A answers the question, while Passage B discusses a chemical element.\"}"
+          },
+          {
+            "premise": "Java is an island in Indonesia.",
+            "hypothesis": "Java is a widely used programming language.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 0.95, \"rationale\": \"Passage A describes the island of Java, while Passage B describes a programming language also named Java.\"}"
+          }
+        ]
+      },
+      "plain": {
+        "metrics": {
+          "n": 63,
+          "precision": 0.6666666666666666,
+          "recall": 0.8461538461538461,
+          "f1": 0.7457627118644068,
+          "confusion": {
+            "tp": 22,
+            "fp": 11,
+            "fn": 4,
+            "tn": 26
+          },
+          "per_category_accuracy": {
+            "agreement": 0.75,
+            "explicit": 0.7,
+            "implicit": 1.0,
+            "negation_agreement": 0.75,
+            "numeric": 1.0,
+            "sense_trap": 0.5833333333333334,
+            "temporal": 0.8,
+            "topic_shift": 0.875,
+            "unit_agreement": 0.6
+          },
+          "topic_shift_false_positive_rate": 0.125,
+          "subtle_conflict_false_negative_rate": 0.0625
+        },
+        "sense_trap_fp_samples": [
+          {
+            "premise": "Paris is the capital of France.",
+            "hypothesis": "Paris is a small town in Lamar County, Texas.",
+            "raw": "conflict"
+          },
+          {
+            "premise": "Cambridge is an English city home to a famous university.",
+            "hypothesis": "Cambridge is a city in Massachusetts, USA.",
+            "raw": "conflict"
+          },
+          {
+            "premise": "Turkey is a country spanning Eastern Europe and Western Asia.",
+            "hypothesis": "A turkey is a large bird commonly eaten at Thanksgiving.",
+            "raw": "conflict"
+          }
+        ]
+      },
+      "fewshot": {
+        "metrics": {
+          "n": 63,
+          "precision": 0.6190476190476191,
+          "recall": 1.0,
+          "f1": 0.7647058823529412,
+          "confusion": {
+            "tp": 26,
+            "fp": 16,
+            "fn": 0,
+            "tn": 21
+          },
+          "per_category_accuracy": {
+            "agreement": 0.75,
+            "explicit": 1.0,
+            "implicit": 1.0,
+            "negation_agreement": 0.5,
+            "numeric": 1.0,
+            "sense_trap": 0.4166666666666667,
+            "temporal": 1.0,
+            "topic_shift": 0.75,
+            "unit_agreement": 0.4
+          },
+          "topic_shift_false_positive_rate": 0.25,
+          "subtle_conflict_false_negative_rate": 0.0
+        },
+        "sense_trap_fp_samples": [
+          {
+            "premise": "Paris is the capital of France.",
+            "hypothesis": "Paris is a small town in Lamar County, Texas.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 0.99, \"rationale\": \"Passage A answers the question, while Passage B describes a different Paris.\"}"
+          },
+          {
+            "premise": "Mercury is the closest planet to the Sun.",
+            "hypothesis": "Mercury is a chemical element with the symbol Hg.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 0.99, \"rationale\": \"Passage A answers the question, while Passage B provides information about a chemical element.\"}"
+          },
+          {
+            "premise": "Java is an island in Indonesia.",
+            "hypothesis": "Java is a widely used programming language.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 0.95, \"rationale\": \"Passage A answers the question, while Passage B discusses a programming language.\"}"
+          }
+        ]
+      }
+    },
+    "gemma3:12b": {
+      "json": {
+        "metrics": {
+          "n": 63,
+          "precision": 0.6341463414634146,
+          "recall": 1.0,
+          "f1": 0.7761194029850745,
+          "confusion": {
+            "tp": 26,
+            "fp": 15,
+            "fn": 0,
+            "tn": 22
+          },
+          "per_category_accuracy": {
+            "agreement": 1.0,
+            "explicit": 1.0,
+            "implicit": 1.0,
+            "negation_agreement": 0.0,
+            "numeric": 1.0,
+            "sense_trap": 0.5,
+            "temporal": 1.0,
+            "topic_shift": 1.0,
+            "unit_agreement": 0.0
+          },
+          "topic_shift_false_positive_rate": 0.0,
+          "subtle_conflict_false_negative_rate": 0.0
+        },
+        "sense_trap_fp_samples": [
+          {
+            "premise": "Paris is the capital of France.",
+            "hypothesis": "Paris is a small town in Lamar County, Texas.",
+            "raw": "```json\n{\"label\": \"conflict\", \"confidence\": 1.0, \"rationale\": \"Both passages address the question, but Passage A states Paris is the capital of France, while Passage B states Paris is a town in Texas."
+          },
+          {
+            "premise": "Cambridge is an English city home to a famous university.",
+            "hypothesis": "Cambridge is a city in Massachusetts, USA.",
+            "raw": "```json\n{\"label\": \"conflict\", \"confidence\": 0.95, \"rationale\": \"Passage A states Cambridge is in England, while Passage B states it is in Massachusetts.\"}\n```"
+          },
+          {
+            "premise": "Georgia is a country in the Caucasus region.",
+            "hypothesis": "Georgia is a state in the southeastern United States.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 1.0, \"rationale\": \"Passage A locates Georgia in the Caucasus region, while Passage B locates it in the southeastern United States. These are incompatible locations."
+          }
+        ]
+      },
+      "plain": {
+        "metrics": {
+          "n": 63,
+          "precision": 0.6341463414634146,
+          "recall": 1.0,
+          "f1": 0.7761194029850745,
+          "confusion": {
+            "tp": 26,
+            "fp": 15,
+            "fn": 0,
+            "tn": 22
+          },
+          "per_category_accuracy": {
+            "agreement": 1.0,
+            "explicit": 1.0,
+            "implicit": 1.0,
+            "negation_agreement": 0.25,
+            "numeric": 1.0,
+            "sense_trap": 0.3333333333333333,
+            "temporal": 1.0,
+            "topic_shift": 1.0,
+            "unit_agreement": 0.2
+          },
+          "topic_shift_false_positive_rate": 0.0,
+          "subtle_conflict_false_negative_rate": 0.0
+        },
+        "sense_trap_fp_samples": [
+          {
+            "premise": "Paris is the capital of France.",
+            "hypothesis": "Paris is a small town in Lamar County, Texas.",
+            "raw": "conflict"
+          },
+          {
+            "premise": "Java is an island in Indonesia.",
+            "hypothesis": "Java is a widely used programming language.",
+            "raw": "conflict"
+          },
+          {
+            "premise": "Cambridge is an English city home to a famous university.",
+            "hypothesis": "Cambridge is a city in Massachusetts, USA.",
+            "raw": "conflict"
+          }
+        ]
+      },
+      "fewshot": {
+        "metrics": {
+          "n": 63,
+          "precision": 0.7647058823529411,
+          "recall": 1.0,
+          "f1": 0.8666666666666666,
+          "confusion": {
+            "tp": 26,
+            "fp": 8,
+            "fn": 0,
+            "tn": 29
+          },
+          "per_category_accuracy": {
+            "agreement": 1.0,
+            "explicit": 1.0,
+            "implicit": 1.0,
+            "negation_agreement": 0.5,
+            "numeric": 1.0,
+            "sense_trap": 0.6666666666666666,
+            "temporal": 1.0,
+            "topic_shift": 0.875,
+            "unit_agreement": 0.8
+          },
+          "topic_shift_false_positive_rate": 0.125,
+          "subtle_conflict_false_negative_rate": 0.0
+        },
+        "sense_trap_fp_samples": [
+          {
+            "premise": "Cambridge is an English city home to a famous university.",
+            "hypothesis": "Cambridge is a city in Massachusetts, USA.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 0.95, \"rationale\": \"Both passages refer to 'Cambridge' but identify it as being in different locations (England vs. Massachusetts).\"}"
+          },
+          {
+            "premise": "Georgia is a country in the Caucasus region.",
+            "hypothesis": "Georgia is a state in the southeastern United States.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 1.0, \"rationale\": \"Both passages refer to 'Georgia', but Passage A identifies it as a country in the Caucasus, while Passage B identifies it as a state in the US.\"}"
+          },
+          {
+            "premise": "The phoenix is a mythical bird reborn from its own ashes.",
+            "hypothesis": "Phoenix is the capital of Arizona.",
+            "raw": "{\"label\": \"conflict\", \"confidence\": 1.0, \"rationale\": \"Passage A identifies the phoenix as a mythical bird, while Passage B states it is a capital city.\"}"
+          }
+        ]
+      }
+    },
+    "gpt-oss:20b": {
+      "json": {
+        "metrics": {
+          "n": 63,
+          "precision": 0.9629629629629629,
+          "recall": 1.0,
+          "f1": 0.9811320754716981,
+          "confusion": {
+            "tp": 26,
+            "fp": 1,
+            "fn": 0,
+            "tn": 36
+          },
+          "per_category_accuracy": {
+            "agreement": 1.0,
+            "explicit": 1.0,
+            "implicit": 1.0,
+            "negation_agreement": 1.0,
+            "numeric": 1.0,
+            "sense_trap": 0.9166666666666666,
+            "temporal": 1.0,
+            "topic_shift": 1.0,
+            "unit_agreement": 1.0
+          },
+          "topic_shift_false_positive_rate": 0.0,
+          "subtle_conflict_false_negative_rate": 0.0
+        },
+        "sense_trap_fp_samples": [
+          {
+            "premise": "Cambridge is an English city home to a famous university.",
+            "hypothesis": "Cambridge is a city in Massachusetts, USA.",
+            "raw": "{\"label\":\"conflict\",\"confidence\":0.95,\"rationale\":\"Both passages identify a location for Cambridge; one says England, the other says Massachusetts, USA, giving contradictory answers to where the unive"
+          }
+        ]
+      },
+      "plain": {
+        "metrics": {
+          "n": 63,
+          "precision": 0.9285714285714286,
+          "recall": 1.0,
+          "f1": 0.962962962962963,
+          "confusion": {
+            "tp": 26,
+            "fp": 2,
+            "fn": 0,
+            "tn": 35
+          },
+          "per_category_accuracy": {
+            "agreement": 1.0,
+            "explicit": 1.0,
+            "implicit": 1.0,
+            "negation_agreement": 1.0,
+            "numeric": 1.0,
+            "sense_trap": 0.8333333333333334,
+            "temporal": 1.0,
+            "topic_shift": 1.0,
+            "unit_agreement": 1.0
+          },
+          "topic_shift_false_positive_rate": 0.0,
+          "subtle_conflict_false_negative_rate": 0.0
+        },
+        "sense_trap_fp_samples": [
+          {
+            "premise": "Cambridge is an English city home to a famous university.",
+            "hypothesis": "Cambridge is a city in Massachusetts, USA.",
+            "raw": "conflict"
+          },
+          {
+            "premise": "Georgia is a country in the Caucasus region.",
+            "hypothesis": "Georgia is a state in the southeastern United States.",
+            "raw": "conflict"
+          }
+        ]
+      },
+      "fewshot": {
+        "metrics": {
+          "n": 63,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "confusion": {
+            "tp": 26,
+            "fp": 0,
+            "fn": 0,
+            "tn": 37
+          },
+          "per_category_accuracy": {
+            "agreement": 1.0,
+            "explicit": 1.0,
+            "implicit": 1.0,
+            "negation_agreement": 1.0,
+            "numeric": 1.0,
+            "sense_trap": 1.0,
+            "temporal": 1.0,
+            "topic_shift": 1.0,
+            "unit_agreement": 1.0
+          },
+          "topic_shift_false_positive_rate": 0.0,
+          "subtle_conflict_false_negative_rate": 0.0
+        },
+        "sense_trap_fp_samples": []
+      }
+    }
+  }
+}

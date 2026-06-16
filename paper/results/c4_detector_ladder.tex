@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+Detector & Precision (95\% CI) & F1 & Sense-trap acc (95\% CI) \\
+\midrule
+cross-enc NLI & 0.68 [0.52,0.83] & 0.81 & 0.67 [0.38,0.92] \\
+LLM bare & 0.90 [0.77,1.00] & 0.95 & 0.75 [0.46,1.00] \\
+LLM answer-rel & 1.00 [1.00,1.00] & 1.00 & 1.00 [1.00,1.00] \\
+\bottomrule
+\end{tabular}
+\caption{Detector ladder on the curated probe set ($n=63$). The cross-encoder is structurally
+unable to be question-conditioned; only the answer-relevant LLM judge closes the sense-trap gap.}
+\label{tab:detector_ladder}
+\end{table}

@@ -1,0 +1,177 @@
+% Shared bibliography for the ebrag-paper portfolio.
+% Competitive landscape established during agenda planning (2026-05).
+% All entries below have been verified against canonical published versions
+% (ACL Anthology / arXiv / journal record) prior to the C4 VLDB submission.
+
+@inproceedings{madamrag2025,
+  title     = {Retrieval-Augmented Generation with Conflicting Evidence},
+  author    = {Wang, Han and Prasad, Archiki and Stengel-Eskin, Elias and Bansal, Mohit},
+  booktitle = {Conference on Language Modeling (COLM)},
+  year      = {2025},
+  note      = {Introduces the RAMDocs benchmark and the MADAM-RAG multi-agent debate;
+               arXiv:2504.13079}
+}
+
+% --- Newer work the C4 audit directly extends ---
+
+@inproceedings{canby2025qnli,
+  title     = {Benchmarking Query-Conditioned Natural Language Inference},
+  author    = {Canby, Marc E. and Chen, Xinchi and Niu, Xing and Chen, Jifan
+               and Min, Bonan and Aydore, Sergul and Castelli, Vittorio},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2025},
+  year      = {2025},
+  month     = jul,
+  address   = {Vienna, Austria},
+  publisher = {Association for Computational Linguistics},
+  pages     = {14808--14835},
+  doi       = {10.18653/v1/2025.findings-acl.765},
+  url       = {https://aclanthology.org/2025.findings-acl.765},
+  note      = {Introduces query-conditioned NLI: the relation label is conditioned on
+               a premise, hypothesis, AND a query specifying the aspect under comparison}
+}
+
+@article{conflictrag2025,
+  title   = {{ConflictRAG}: Detecting and Resolving Knowledge Conflicts in
+             Retrieval-Augmented Generation},
+  author  = {Wang, Chenyu and Li, Yueyuan and Liu, Yingmin and Shu, Yang},
+  journal = {arXiv preprint arXiv:2605.17301},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2605.17301},
+  note    = {Two-stage conflict detection (lightweight embedding-based MLP classifier
+             with selective LLM refinement) plus Entropy-TOPSIS source credibility and
+             a Conflict-Aware RAG Score. Reports 90.8\% detection accuracy, 88.7\%
+             conflict-detection F1, and 5.3--6.1\% downstream correctness gains.}
+}
+
+@article{contradetect2025,
+  title   = {Contradiction Detection in {RAG} Systems: Evaluating {LLM}s as Context
+             Validators for Improved Information Consistency},
+  author  = {Gokul, Vignesh and Tenneti, Srikanth and Nakkiran, Alwarappan},
+  journal = {arXiv preprint arXiv:2504.00180},
+  year    = {2025},
+  month   = mar,
+  url     = {https://arxiv.org/abs/2504.00180},
+  note    = {Evaluates LLMs as context validators that scan retrieved context for
+             contradictions, an LLM-as-judge baseline directly comparable to our llm\_bare.}
+}
+
+@inproceedings{conqret2025,
+  title     = {{ConQRet}: A New Benchmark for Fine-Grained Automatic Evaluation of
+               Retrieval Augmented Computational Argumentation},
+  author    = {Dhole, Kaustubh and Shu, Kai and Agichtein, Eugene},
+  booktitle = {Proceedings of the 2025 Conference of the Nations of the Americas
+               Chapter of the Association for Computational Linguistics: Human Language
+               Technologies (Volume 1: Long Papers)},
+  year      = {2025},
+  month     = apr,
+  address   = {Albuquerque, New Mexico},
+  publisher = {Association for Computational Linguistics},
+  pages     = {5687--5713},
+  url       = {https://aclanthology.org/2025.naacl-long.293},
+  note      = {Fine-grained retrieval evaluation for computational argumentation;
+               stance-diversified retrieved evidence}
+}
+
+@article{worsezero2025,
+  title   = {Worse than Zero-shot? A Fact-Checking Dataset for Evaluating the
+             Robustness of {RAG} Against Misleading Retrievals},
+  author  = {Zeng, Linda and Gupta, Rithwik and Motwani, Divij and Zhang, Yi
+             and Yang, Diji},
+  journal = {arXiv preprint arXiv:2502.16101},
+  year    = {2025},
+  month   = feb,
+  url     = {https://arxiv.org/abs/2502.16101}
+}
+
+@article{astuterag2024,
+  title   = {Astute RAG: Overcoming Imperfect Retrieval Augmentation and
+             Knowledge Conflicts for Large Language Models},
+  author  = {Wang, Fei and Wan, Xingchen and Sun, Ruoxi and Chen, Jiefeng
+             and Ar{\i}k, Sercan {\"O}.},
+  journal = {arXiv preprint arXiv:2410.07176},
+  year    = {2024},
+  month   = oct,
+  url     = {https://arxiv.org/abs/2410.07176}
+}
+
+@inproceedings{clasheval2024,
+  title     = {ClashEval: Quantifying the Tug-of-War between an {LLM}'s
+               Internal Prior and External Evidence},
+  author    = {Wu, Kevin and Wu, Eric and Zou, James},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS),
+               Datasets and Benchmarks Track},
+  year      = {2024},
+  url       = {https://openreview.net/forum?id=WGoCZl2itU}
+}
+
+@article{conrag2025,
+  title   = {{ConRAG}: Contradiction-Aware Retrieval-Augmented Generation under
+             Multi-Source Conflicting Evidence},
+  author  = {Sun, Xinzhuo and Chen, Jing and Zhou, Binghua and Kuo, Meng-Ju},
+  journal = {Journal of Advanced Computing Systems},
+  volume  = {4},
+  number  = {7},
+  year    = {2024},
+  url     = {https://scipublication.com/index.php/JACS/article/view/257},
+  note    = {Two-stage NLI-style passage tagging, consistent-evidence clustering, and
+             answer generation with traceable citations.}
+}
+
+@article{fvarag2025,
+  title   = {{FVA-RAG}: Falsification-Verification Alignment for Mitigating
+             Sycophantic Hallucinations},
+  author  = {Ravishankara, Mayank},
+  journal = {arXiv preprint arXiv:2512.07015},
+  year    = {2025},
+  month   = dec,
+  url     = {https://arxiv.org/abs/2512.07015}
+}
+
+@article{ttcsurvey2025,
+  title   = {Reasoning on a Budget: A Survey of Adaptive and Controllable
+             Test-Time Compute in {LLM}s},
+  author  = {Anonymous},
+  journal = {arXiv preprint arXiv:2507.02076},
+  year    = {2025}
+}
+
+% --- Standard baselines / datasets ---
+
+@inproceedings{fever2018,
+  title     = {{FEVER}: a Large-scale Dataset for Fact Extraction and VERification},
+  author    = {Thorne, James and Vlachos, Andreas and Christodoulopoulos,
+               Christos and Mittal, Arpit},
+  booktitle = {NAACL},
+  year      = {2018}
+}
+
+@inproceedings{hotpotqa2018,
+  title     = {{HotpotQA}: A Dataset for Diverse, Explainable Multi-hop
+               Question Answering},
+  author    = {Yang, Zhilin and others},
+  booktitle = {EMNLP},
+  year      = {2018}
+}
+
+@inproceedings{hyde2023,
+  title     = {Precise Zero-Shot Dense Retrieval without Relevance Labels},
+  author    = {Gao, Luyu and Ma, Xueguang and Lin, Jimmy and Callan, Jamie},
+  booktitle = {ACL},
+  year      = {2023},
+  note      = {HyDE}
+}
+
+@article{ragfusion2024,
+  title   = {RAG-Fusion: A New Take on Retrieval-Augmented Generation},
+  author  = {Rackauckas, Zackary},
+  journal = {arXiv preprint},
+  year    = {2024}
+}
+
+@inproceedings{guo2017calibration,
+  title     = {On Calibration of Modern Neural Networks},
+  author    = {Guo, Chuan and Pleiss, Geoff and Sun, Yu and Weinberger, Kilian Q.},
+  booktitle = {ICML},
+  year      = {2017},
+  note      = {Temperature scaling, ECE}
+}

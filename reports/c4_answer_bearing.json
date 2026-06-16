@@ -1,0 +1,736 @@
+{
+  "experiment": "c4_answer_bearing",
+  "judge_model": "gpt-oss:120b",
+  "gen_model": "gemma3:27b",
+  "n_pairs": 42,
+  "category_counts": {
+    "conflict": 14,
+    "agreement": 14,
+    "topic_shift": 14
+  },
+  "by_detector": {
+    "cross_encoder_nli": {
+      "metrics": {
+        "n": 42,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6666666666666666,
+        "confusion": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 7,
+          "tn": 28
+        },
+        "per_category_accuracy": {
+          "agreement": 1.0,
+          "conflict": 0.5,
+          "topic_shift": 1.0
+        },
+        "topic_shift_false_positive_rate": 0.0,
+        "subtle_conflict_false_negative_rate": null,
+        "precision_ci": [
+          1.0,
+          1.0
+        ],
+        "recall_ci": [
+          0.25,
+          0.7777777777777778
+        ]
+      },
+      "records": [
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        }
+      ]
+    },
+    "llm_bare": {
+      "metrics": {
+        "n": 42,
+        "precision": 0.9230769230769231,
+        "recall": 0.8571428571428571,
+        "f1": 0.888888888888889,
+        "confusion": {
+          "tp": 12,
+          "fp": 1,
+          "fn": 2,
+          "tn": 27
+        },
+        "per_category_accuracy": {
+          "agreement": 0.9285714285714286,
+          "conflict": 0.8571428571428571,
+          "topic_shift": 1.0
+        },
+        "topic_shift_false_positive_rate": 0.0,
+        "subtle_conflict_false_negative_rate": null,
+        "precision_ci": [
+          0.7495833333333334,
+          1.0
+        ],
+        "recall_ci": [
+          0.6469537815126051,
+          1.0
+        ]
+      },
+      "records": [
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": true
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        }
+      ]
+    },
+    "llm_answer_relevant": {
+      "metrics": {
+        "n": 42,
+        "precision": 1.0,
+        "recall": 0.7857142857142857,
+        "f1": 0.88,
+        "confusion": {
+          "tp": 11,
+          "fp": 0,
+          "fn": 3,
+          "tn": 28
+        },
+        "per_category_accuracy": {
+          "agreement": 1.0,
+          "conflict": 0.7857142857142857,
+          "topic_shift": 1.0
+        },
+        "topic_shift_false_positive_rate": 0.0,
+        "subtle_conflict_false_negative_rate": null,
+        "precision_ci": [
+          1.0,
+          1.0
+        ],
+        "recall_ci": [
+          0.5452797202797203,
+          1.0
+        ]
+      },
+      "records": [
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "conflict",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        }
+      ]
+    }
+  }
+}

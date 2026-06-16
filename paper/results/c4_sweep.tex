@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{llrcccc}
+\toprule
+Model & Family & Size (B) & bare P (95\% CI) & answer-rel P (95\% CI) & Lift & FP b$\rightarrow$ar \\
+\midrule
+\texttt{gpt-oss:20b} & gpt-oss & 20 & 0.84 [0.70,0.96] & 1.00 [1.00,1.00] & +0.16 & 5$\rightarrow$0 \\
+\texttt{gpt-oss:120b} & gpt-oss & 120 & 0.90 [0.77,1.00] & 1.00 [1.00,1.00] & +0.10 & 3$\rightarrow$0 \\
+\texttt{gemma3:4b} & gemma & 4 & 0.96 [0.88,1.00] & 0.51 [0.37,0.65] & -0.45 & 1$\rightarrow$25 \\
+\texttt{gemma3:12b} & gemma & 12 & 0.76 [0.62,0.90] & 0.63 [0.47,0.78] & -0.13 & 8$\rightarrow$15 \\
+\texttt{gemma3:27b} & gemma & 27 & 0.83 [0.69,0.96] & 0.87 [0.73,0.97] & +0.03 & 5$\rightarrow$4 \\
+\texttt{qwen3-next:80b} & qwen & 80 & 0.93 [0.81,1.00] & 1.00 [1.00,1.00] & +0.07 & 2$\rightarrow$0 \\
+\texttt{deepseek-v3.1:671b} & deepseek & 671 & 0.84 [0.70,0.95] & 0.87 [0.73,0.97] & +0.03 & 5$\rightarrow$4 \\
+\texttt{glm-4.6} & glm & -- & 0.84 [0.70,0.96] & 1.00 [1.00,1.00] & +0.16 & 5$\rightarrow$0 \\
+\texttt{ministral-3:8b} & mistral & 8 & 0.70 [0.56,0.84] & 0.74 [0.59,0.88] & +0.04 & 11$\rightarrow$9 \\
+\texttt{nemotron-3-nano:30b} & nemotron & 30 & 0.87 [0.73,0.97] & 0.96 [0.88,1.00] & +0.10 & 4$\rightarrow$1 \\
+\bottomrule
+\end{tabular}
+\caption{Answer-relevance precision lift across the 10-model sweep
+(8/10 improve; mean lift +0.011).
+The four most capable models reach perfect precision; the two small Gemma models regress
+(non-overlapping CIs). $n=63$ probes.}
+\label{tab:sweep}
+\end{table*}

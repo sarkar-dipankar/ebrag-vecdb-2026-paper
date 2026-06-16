@@ -1,0 +1,1601 @@
+{
+  "experiment": "c4_fever_validation",
+  "judge_model": "gpt-oss:120b",
+  "n_pairs": 100,
+  "category_counts": {
+    "refutes": 50,
+    "supports": 50
+  },
+  "by_detector": {
+    "cross_encoder_nli": {
+      "metrics": {
+        "n": 100,
+        "precision": 0.9090909090909091,
+        "recall": 0.8,
+        "f1": 0.8510638297872342,
+        "confusion": {
+          "tp": 40,
+          "fp": 4,
+          "fn": 10,
+          "tn": 46
+        },
+        "per_category_accuracy": {
+          "refutes": 0.8,
+          "supports": 0.92
+        },
+        "topic_shift_false_positive_rate": null,
+        "subtle_conflict_false_negative_rate": null,
+        "precision_ci": [
+          0.8163265306122449,
+          0.9800098039215686
+        ],
+        "recall_ci": [
+          0.6808510638297872,
+          0.9090909090909091
+        ]
+      },
+      "records": [
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        }
+      ]
+    },
+    "llm_bare": {
+      "metrics": {
+        "n": 100,
+        "precision": 1.0,
+        "recall": 0.72,
+        "f1": 0.8372093023255813,
+        "confusion": {
+          "tp": 36,
+          "fp": 0,
+          "fn": 14,
+          "tn": 50
+        },
+        "per_category_accuracy": {
+          "refutes": 0.72,
+          "supports": 1.0
+        },
+        "topic_shift_false_positive_rate": null,
+        "subtle_conflict_false_negative_rate": null,
+        "precision_ci": [
+          1.0,
+          1.0
+        ],
+        "recall_ci": [
+          0.585354348826507,
+          0.8421310629514963
+        ]
+      },
+      "records": [
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        }
+      ]
+    },
+    "llm_answer_relevant": {
+      "metrics": {
+        "n": 100,
+        "precision": 1.0,
+        "recall": 0.68,
+        "f1": 0.8095238095238095,
+        "confusion": {
+          "tp": 34,
+          "fp": 0,
+          "fn": 16,
+          "tn": 50
+        },
+        "per_category_accuracy": {
+          "refutes": 0.68,
+          "supports": 1.0
+        },
+        "topic_shift_false_positive_rate": null,
+        "subtle_conflict_false_negative_rate": null,
+        "precision_ci": [
+          1.0,
+          1.0
+        ],
+        "recall_ci": [
+          0.5318823273990447,
+          0.8076923076923077
+        ]
+      },
+      "records": [
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "refutes",
+          "gold_conflict": true,
+          "predicted_conflict": true
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        },
+        {
+          "category": "supports",
+          "gold_conflict": false,
+          "predicted_conflict": false
+        }
+      ]
+    }
+  }
+}

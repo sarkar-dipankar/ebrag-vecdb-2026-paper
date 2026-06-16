@@ -1,0 +1,494 @@
+% VecDB@VLDB 2026 workshop format -- uses the shipped acmart.cls + ACM-Reference-Format.bst
+% Tables are generated from JSON artefacts by
+%   `python -m ebrag.benchmarks.experiments.c4_render_tables`
+
+\documentclass[sigconf, nonacm, natbib]{acmart}
+
+\let\Bbbk\relax       % avoid amssymb / amsfonts conflict pulled in by acmart
+\usepackage{amssymb}  % \checkmark in the per-model ladder table
+
+%%% VLDB workshop metadata (required) %%%
+\newcommand\vldbyear{2026}
+\newcommand\vldbworkshop{The 2nd Workshop on Vector Databases}
+\newcommand\vldbauthors{\authors}
+\newcommand\vldbtitle{\shorttitle}
+\newcommand\vldbavailabilityurl{https://github.com/sarkar-dipankar/ebrag-vecdb-2026-paper}
+\newcommand\vldbpagestyle{plain}
+
+\begin{document}
+
+% Relax line-breaking penalties to suppress minor overfull-hbox warnings on
+% hyphenated compounds in this two-column format.
+\emergencystretch=3em
+\hyphenpenalty=100
+\tolerance=1000
+
+\title{An Input-Regime Audit of Conflict Detection for Retrieval-Augmented Generation}
+
+\author{Dipankar Sarkar}
+\affiliation{%
+  \institution{Skelf Research}
+  \country{}
+}
+\email{dipankar@skelfresearch.com}
+
+\begin{abstract}
+Vector-database-backed retrieval-augmented generation (RAG) pipelines increasingly add a
+\emph{conflict-detection} stage that flags contradictions among retrieved passages before
+generation. Two recent directions dominate practice. The first is a pairwise NLI
+cross-encoder over retrieved passages, the standard baseline detector across
+conflict-aware RAG systems and the stack deployed by
+\textsc{ConflictRAG}~\citep{conflictrag2025}. The second is a
+\emph{query-conditioned} formulation that lets the NLI label depend on the question
+being answered, recently benchmarked by~\citet{canby2025qnli}. Practitioners must choose
+between them with little empirical guidance. We provide that guidance. We audit three
+detectors: the classic DeBERTa-MNLI cross-encoder, an LLM-as-judge baseline, and the
+same LLM judge question-conditioned. We evaluate them on curated probes ($n{=}63$ with
+bootstrap CIs), a 10-model LLM sweep, a prompt-robustness ablation, a long-passage
+realism step, an answer-bearing scoping study, and external validation on 100
+human-labelled FEVER pairs. Five findings guide deployment. (1) LLM judges retain
+perfect precision on labelled FEVER pairs and flag far fewer top-$k$ retrieved non-gold
+passages than the cross-encoder ($0.09$ vs $0.43$ flag rate).
+(2) A same-name ``sense-trap'' false positive
+systematically fools both the cross-encoder and pairwise LLM judging. Only
+question-conditioning closes the gap (precision $0.68 \to 1.00$ on curated probes,
+replicated for 8 of 10 LLM families). (3) The cross-encoder vs LLM trade is
+\emph{input-distribution dependent}. The cross-encoder is competitive on its native
+short claim/evidence distribution (FEVER F1 $0.85$) but unusable on long multi-claim
+passages (F1 $0.18$). (4) The small-model regression under the question-conditioning
+prompt is a capability limit, not a format limit. We verify this by inspecting raw
+outputs. (5) Pairwise conflict detection is ill-posed on multi-hop evidence fragments
+and must be scoped to answer-bearing units. We synthesise the findings into a five-row
+input-regime ladder. The ladder recommends a detector for each retrieval context a
+vector-DB practitioner is likely to encounter. Code and result artefacts are released.
+\end{abstract}
+
+\maketitle
+
+%%% do not modify the following VLDB block %%
+%%% VLDB block start %%%
+\pagestyle{\vldbpagestyle}
+\begingroup\small\noindent\raggedright\textbf{VLDB Workshop Reference Format:}\\
+\vldbauthors. \vldbtitle. VLDB \vldbyear\ Workshop: \vldbworkshop.\\
+\endgroup
+\begingroup
+\renewcommand\thefootnote{}\footnote{\noindent
+This work is licensed under the Creative Commons BY-NC-ND 4.0 International License. Visit \url{https://creativecommons.org/licenses/by-nc-nd/4.0/} to view a copy of this license. For any use beyond those covered by this license, obtain permission by emailing \href{mailto:info@vldb.org}{info@vldb.org}. Copyright is held by the owner/author(s). Publication rights licensed to the VLDB Endowment. \\
+\raggedright Proceedings of the VLDB Endowment. ISSN 2150-8097. \\
+}\addtocounter{footnote}{-1}\endgroup
+%%% VLDB block end %%%
+
+%%% do not modify the following VLDB block %%
+%%% VLDB block start %%%
+\ifdefempty{\vldbavailabilityurl}{}{
+\vspace{.3cm}
+\begingroup\small\noindent\raggedright\textbf{VLDB Workshop Artifact Availability:}\\
+The source code, data, and/or other artifacts have been made available at \url{\vldbavailabilityurl}.
+\endgroup
+}
+%%% VLDB block end %%%
+
+\section{Introduction}
+\label{sec:intro}
+A vector-database-backed RAG pipeline returns a top-$k$ set of passages. A growing class
+of \emph{conflict-aware} systems then runs a \emph{conflict-detection} stage on those
+passages before generation~\citep{madamrag2025,astuterag2024,contradetect2025,
+fvarag2025,clasheval2024,worsezero2025}. The detector's signal gates downstream choices:
+multi-agent debate over conflicting sources~\citep{madamrag2025}, source-reliability
+consolidation~\citep{astuterag2024}, structured support/refute
+output~\citep{conrag2025}, or calibrated abstention via standard confidence
+calibration~\citep{guo2017calibration}. The detector is the load-bearing component
+upstream of all of these: a poor detector silently caps every method built on top of it.
+
+Two recent directions dominate practice. A pairwise NLI cross-encoder applied to
+retrieved-passage pairs is the standard baseline detector across conflict-aware
+pipelines~\citep{conflictrag2025,madamrag2025,contradetect2025}. As a recent
+conflict-aware RAG system, \textsc{ConflictRAG}~\citep{conflictrag2025} reports
+$88.7\%$ F1 and downstream correctness gains of $5.3$ to $6.1\%$ over conflict-aware
+baselines.
+Concurrent work by~\citet{canby2025qnli} formalises and benchmarks \emph{query-conditioned
+NLI}: the entailment label depends on a premise, a hypothesis, \emph{and} a query that
+specifies the aspect under comparison. A practitioner picking a detector for a
+vector-DB pipeline needs to know three things: which approach, on what kind of input,
+and with what model.
+
+We provide that empirical guidance. We audit a representative pairwise NLI cross-encoder
+(DeBERTa-base-MNLI), an LLM-as-judge baseline in the style
+of~\citet{contradetect2025}, and the same LLM judge question-conditioned in the style
+of~\citet{canby2025qnli}. The setting is the conflict-aware RAG pipeline of
+\textsc{ConflictRAG}~\citep{conflictrag2025} and adjacent systems. We evaluate the three
+detectors across a curated probe set, a 10-model LLM sweep, a small-model
+prompt-robustness ablation, a long-passage realism study, an answer-bearing scoping
+experiment, and external validation on 100 human-labelled FEVER claim/evidence pairs.
+We report bootstrap 95\% confidence intervals throughout, so the audit's orderings are
+statistically interpretable.
+
+\paragraph{Where this sits in the vector-DB pipeline}
+The detector we audit is a single stage in a longer vector-DB-backed RAG pipeline:
+\begin{center}\small
+top-$k$ retrieval $\to$ passage units $\to$ pair construction $\to$\\
+detector $\to$ generation policy
+\end{center}
+The vector-DB practitioner controls five design choices that change what the detector
+sees: (i)~chunk size and granularity (sentence, paragraph, multi-hop); (ii)~top-$k$ and
+how many pairs are checked; (iii)~whether pairs are formed sentence-level,
+paragraph-level, or only on \emph{answer-bearing} units; (iv)~whether conflict detection
+runs before or after a question-conditioned extraction step; and (v)~detector cost and
+latency vs precision. Our audit holds the surrounding pipeline fixed and varies the
+detector. The findings below land on choices (i), (iii), (iv), and (v).
+
+\paragraph{Contributions}
+\begin{enumerate}
+  \item \textbf{A mechanistic failure mode of pairwise judging: the sense trap.}
+  Same-name-different-referent passage pairs (``Paris is the capital of France'' vs.\
+  ``Paris is a town in Texas'') systematically fool both the pairwise NLI cross-encoder
+  baseline used across conflict-aware RAG
+  \citep{conflictrag2025,madamrag2025,contradetect2025} and a pairwise LLM judge.
+  We isolate the mechanism: pairwise judging lacks the question that says
+  \emph{which} referent is relevant.
+  \item \textbf{An empirical audit of the query-conditioning fix.}
+  Conditioning the LLM judge on the question is the operational form of the
+  query-conditioned NLI proposed by~\citet{canby2025qnli}. It closes the sense-trap gap
+  on the curated set (precision $0.68 \to 1.00$) and replicates across 8 of 10
+  open-weight LLM families (\S\ref{sec:sweep}) with non-overlapping bootstrap CIs.
+  \item \textbf{Capability, not format.} The small-Gemma regression under the
+  question-conditioning prompt is a reasoning limit, not a JSON-format artefact.
+  Raw model output inspection shows it (\S\ref{sec:promptrob}).
+  \item \textbf{Scoping: pairwise conflict is ill-posed on multi-hop evidence
+  fragments.} An evidence paragraph about one entity (``Scott Derrickson is American'')
+  does not contradict a relationship verdict (``Derrickson and Wood are of different
+  nationalities''). The judge's \texttt{neutral} is correct. The audit must be scoped
+  to answer-bearing pairs. This is a methodological clarification useful to any
+  downstream vector-DB pipeline that retrieves multi-hop evidence.
+  \item \textbf{The detector trade is input-regime dependent.} The cross-encoder is
+  competitive on its native short claim/evidence distribution (FEVER F1 $0.85$) but
+  unusable on long multi-claim passages (F1 $0.18$). LLM judges are robust across
+  lengths but more conservative on recall. We chart the five-row regime
+  ladder (Table~\ref{tab:synthesis}) as a deployment guide.
+\end{enumerate}
+
+\paragraph{Relation to prior work}
+\citet{canby2025qnli} formalise query-conditioned NLI as a benchmark task; we instead
+audit it as a \emph{deployable conflict-detection signal} for RAG. We characterise where
+its fix dominates the pairwise alternative and identify the model-capability regime in
+which it backfires. \citet{conflictrag2025} build a two-stage conflict-aware RAG pipeline
+(embedding-based MLP classifier with selective LLM refinement, then source-credibility
+weighting) and report end-task gains; we audit the underlying pairwise NLI detector
+signal in isolation, upstream of any source-credibility stage. \citet{conqret2025} and
+\citet{madamrag2025} target the generator's handling of conflicting evidence; we work on
+the detector that supplies their input signal.
+
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Conflict detection on top of retrieval}
+\textsc{ConflictRAG}~\citep{conflictrag2025} is the most direct system motivation for
+our audit. It introduces a two-stage conflict-detection module (an embedding-based MLP
+classifier with selective LLM refinement) followed by source-credibility weighting,
+reporting $88.7\%$ conflict-detection F1 and $5.3$ to $6.1\%$ downstream correctness
+gains over conflict-aware baselines. Our audit complements that system result by
+isolating the pairwise NLI signal, the standard cross-encoder baseline used across this
+literature~\citep{madamrag2025,contradetect2025}, and characterising where it succeeds
+and where it fails. \citet{contradetect2025} evaluate LLMs as context-validators in RAG
+pipelines, a direct counterpart to our \texttt{llm\_bare} detector.
+\citet{worsezero2025} construct a fact-checking dataset for RAG robustness against
+misleading retrieval, complementing the FEVER claim/evidence audit we run in
+\S\ref{sec:fever}.
+
+\paragraph{Query-conditioned NLI}
+\citet{canby2025qnli} introduce and benchmark query-conditioned NLI. The
+entailment/contradiction label is conditioned on a query alongside the premise and
+hypothesis. Their contribution is the formalisation and a benchmark. Ours is an
+\emph{empirical deployment audit} of the same idea for RAG. We ask how the
+question-conditioned variant behaves vs.\ pairwise NLI across model families
+(\S\ref{sec:sweep}), input lengths (\S\ref{sec:realism}, \S\ref{sec:answerbearing}), and
+real human-labelled retrieved evidence (\S\ref{sec:fever}). We also identify the
+small-model capability regime in which the fix regresses (\S\ref{sec:promptrob}).
+
+\paragraph{Generator-side conflict-aware RAG}
+A line of work targets how the \emph{generator} handles disagreement: multi-agent
+grounded debate (\textsc{Madam-Rag} + \textsc{RAMDocs})~\citep{madamrag2025};
+source-reliability consolidation~\citep{astuterag2024}; structured support/refute output
+\citep{conrag2025}; falsification for sycophancy~\citep{fvarag2025}; the
+prior-vs-context tug-of-war \citep{clasheval2024}; stance-diversified retrieved evidence
+for argumentation \citep{conqret2025}. All of these consume a detector signal and
+reason over conflicting inputs; none audit the detector itself. We operate strictly
+upstream, measuring where pairwise detection (cross-encoder NLI and LLM-as-judge alike)
+fails and where question-conditioning closes the gap, so the downstream choices these
+systems make rest on a characterised signal.
+
+\paragraph{NLI as a building block}
+Cross-encoder NLI predates the RAG conflict-detection literature. We use
+DeBERTa-base-MNLI as the canonical pairwise NLI representative because variants of this
+model family are the standard baseline detector across conflict-aware
+RAG~\citep{conflictrag2025,madamrag2025,contradetect2025}. Temperature scaling and
+calibration of NLI heads \citep{guo2017calibration} are orthogonal to the audit. We
+report contradiction-class probabilities directly.
+
+\section{Detectors}
+\label{sec:detectors}
+We compare three detectors. All are evaluated as a binary contradiction classifier.
+\begin{description}
+  \item[\textsc{cross\_encoder\_nli}.] DeBERTa-base-MNLI, the ``classic'' pairwise
+  detector used by many conflict-aware RAG pipelines. Input: a single text-pair string.
+  Pairwise by design, with no slot for the question.
+  \item[\textsc{llm\_bare}.] An LLM judge prompted to label the pair entailment /
+  contradiction / neutral. Pairwise like the cross-encoder, but with arbitrary
+  instruction-following.
+  \item[\textsc{llm\_answer\_relevant}.] The same LLM judge prompted to decide whether
+  passages A and B give \emph{conflicting answers to a specific question}. The question
+  enters the prompt; A and B are otherwise the same texts as in the bare variant. This
+  is the operational form of the query-conditioned NLI of~\citet{canby2025qnli}, used
+  here as a deployable conflict-detection signal.
+\end{description}
+
+\section{Probes and data}
+\label{sec:data}
+\textbf{Curated probe set.} 63 probes spanning 9 categories: same-name sense traps,
+explicit conflicts, numeric/temporal/implicit conflicts, paraphrase agreement, unit
+equivalence, negation agreement, topic shift. Gold-correctness invariants are unit-tested
+(every conflict category is gold=conflict; every no-conflict category is
+gold=no-conflict; template-generated numeric/temporal/unit pairs differ in only the
+controlled value).
+
+\textbf{Long answer-bearing pairs.} For 14 single-hop factoid questions with two
+competing answers, we LLM-write 3 to 4 sentence passages that each assert a specific
+answer. This gives conflict, agreement, and topic-shift pairs over long real-sounding
+text.
+
+\textbf{FEVER (real, human-labelled).} 100 VERIFIABLE pairs from
+\texttt{copenlu/fever\_gold\_evidence}: 50 REFUTES (conflict) and 50 SUPPORTS
+(no-conflict). Premise is the gold evidence sentence and hypothesis is the claim.
+
+\section{The sense-trap and answer-relevance}
+\label{sec:answerrel}
+On the curated probes, a same-name-different-referent pair (``Paris, France'' /
+``Paris, Texas'' with question \emph{What is the capital of France?}) is consistently
+flagged as a contradiction by the cross-encoder and frequently by the bare LLM judge.
+Both decide pairwise without the question and default to the assumption that the two
+passages are about the same ``Paris''. Conditioning the judge on the question
+(``Do A and B give conflicting answers to \emph{this} question?'') removes the failure
+without recall loss on the genuine conflicts: precision rises from $0.68$ to $1.00$ on
+the curated probes (Table~\ref{tab:detector_ladder}), and the cross-encoder's upper CI
+($0.83$) sits below answer-relevance's point estimate ($1.00$).
+
+\input{results/c4_detector_ladder.tex}
+
+\section{Cross-model scaling}
+\label{sec:sweep}
+We run the bare vs.~answer-relevant comparison across the 10-model
+\texttt{DEFAULT\_SWEEP} (six families, 4B to 671B parameters) with bootstrap precision
+CIs (Table~\ref{tab:sweep}). Across families, the four most capable models
+(gpt-oss:20b, gpt-oss:120b, qwen3-next:80b, glm-4.6) reach perfect precision under the
+answer-relevance prompt with bare CIs that sit clearly below. 8 of 10 models improve.
+The two small Gemma models regress with non-overlapping CIs: gemma3:4b collapses to
+P $0.51$ [$0.37, 0.65$] (FP $1{\to}25$). The mean lift is small ($+0.011$) because the
+two regressions drag it down; the headline is the family-spanning capability
+dependence, not the mean.
+
+\input{results/c4_sweep.tex}
+
+\paragraph{The ladder against a fixed cross-encoder}
+The cross-encoder NLI is model-fixed (DeBERTa-MNLI), so its precision on the curated set
+is a constant reference. The per-LLM-model picture against it is in
+Table~\ref{tab:ladder_per_model}. \textbf{Bare LLM judging beats the cross-encoder for
+every one of the 10 LLM models} on this probe set. Answer-relevance beats it for 8 of
+10, and the full ladder (answer-rel $\geq$ bare $\geq$ cross-encoder) holds for the
+same 8 models that improved under answer-relevance in Table~\ref{tab:sweep}. The two
+small Gemma regressors are the \emph{only} models on which an LLM judge would lose to
+the DeBERTa-MNLI cross-encoder under the answer-relevant prompt: the binding constraint
+is the capability limit (\S\ref{sec:promptrob}), not the framing.
+
+\input{results/c4_ladder_per_model.tex}
+
+\section{Capability, not format}
+\label{sec:promptrob}
+The small-Gemma regression could be a JSON-format failure or a reasoning limit. We
+disentangle (Table~\ref{tab:prompt_robustness}) by judging under three answer-relevance
+prompts: the production JSON prompt, a one-word \texttt{plain} variant, and a
+\texttt{fewshot} variant with two worked examples. We test all three on gemma3:4b,
+gemma3:12b, and the capable gpt-oss:20b control. We then \emph{inspect the raw outputs}
+on the sense-trap false positives. gemma3:4b emits clean, parseable JSON that often
+verbalises the right distinction. On Mercury planet vs.~element, its rationale reads
+``Passage A answers the question, while Passage B discusses a chemical element''. The
+model still labels the pair \texttt{contradiction}. This is a decision/reasoning
+failure, not a format artefact. Switching to one-word output only shifts the threshold
+(FP $25 \to 11$), and the model still fails on Paris/Cambridge sense traps. Few-shot
+demonstration partially rescues gemma3:12b (sense-trap acc $0.50 \to 0.67$) but not
+gemma3:4b. gpt-oss:20b is robust across all variants and goes to perfect with few-shot.
+
+\input{results/c4_prompt_robustness.tex}
+
+\section{Realism: scoping to answer-bearing pairs}
+\label{sec:realism}
+A first realism run with HotpotQA-distractor produced an honest negative. Pairwise
+conflict recall stayed low ($\le 0.45$) even after we fixed the refutation generator
+(boolean-flip opposite-answer refutations). On this regime ($n=59$ pairs from the
+corrected refutation generator), the cross-encoder hits F1 $0.18$, LLM-bare $0.62$,
+and the question-conditioned judge $0.26$. Manual inspection clarified the cause. A
+HotpotQA ``supporting'' paragraph is an \emph{evidence fragment about one entity}
+(``Scott Derrickson is an American director''). An opposite-answer refutation is a
+\emph{multi-hop relationship verdict} that often \emph{agrees on the shared fact}
+(``born in Denver, Colorado'' is still American) and differs only on the combined
+conclusion. S and R therefore \emph{do not contradict pairwise}. The judge's
+\texttt{neutral} is correct, and the gold is ill-posed. Pairwise conflict detection is
+only well-defined when \emph{both} passages assert an answer to the same question. We
+accordingly scope the experiments to answer-bearing units.
+
+\section{Long answer-bearing pairs}
+\label{sec:answerbearing}
+Restricting to 14 single-hop factoid questions, we LLM-write a 3 to 4 sentence passage
+asserting each candidate answer and build conflict / agreement / topic-shift pairs over
+the resulting long text (Table~\ref{tab:answer_bearing}). Conflict recall recovers
+across detectors (cross-encoder $0.05 \to 0.50$ versus multi-hop evidence; LLM-bare
+$0.45 \to 0.86$; answer-relevant $0.15 \to 0.79$). When the gold is well-posed and
+both sides are answer-bearing, detectors detect. On long text, the LLM judges dominate
+F1 ($0.89$ vs $0.67$). The cross-encoder regains perfect precision but length caps its
+recall at $0.50$. Answer-relevance has perfect precision at a small recall cost. Its
+big sense-trap precision win is muted here because these topic-shift distractors are
+different-\emph{subject}, not same-name.
+
+\input{results/c4_answer_bearing.tex}
+
+\section{External validation on real FEVER}
+\label{sec:fever}
+We sanity-check the previous result on real human-labelled data.
+\texttt{copenlu/fever\_gold\_evidence} bundles claim + label (SUPPORTS / REFUTES) +
+gold evidence sentences. We evaluate the three detectors on 100 VERIFIABLE pairs
+balanced 50/50 (Table~\ref{tab:fever}). The LLM judges keep \textbf{perfect precision}
+($1.00$~[$1.00,1.00$]) on real data, so the precision finding survives external
+validation. The cross-encoder, on its native training distribution (short
+claim/evidence NLI), is \emph{competitive on F1} ($0.85$ vs $0.84/0.81$) via higher
+recall ($0.80$ vs $0.72/0.68$). Answer-relevance neither helps nor hurts here (no
+sense-trap failures to fix on FEVER pairs), consistent with the answer-bearing result.
+
+\input{results/c4_fever.tex}
+
+\section{Vector-retrieval realism}
+\label{sec:retrieval}
+The experiments above evaluate the three detectors on curated or pre-paired data. This
+section closes the deployment loop. We embed all 100 FEVER gold evidence sentences with
+\texttt{all-MiniLM-L6-v2} and use exact cosine retrieval as a deterministic small-corpus
+proxy for the vector-index stage, sidestepping ANN variance in this audit. We retrieve
+top-$k=5$ passages for each of the 100 claims. Each
+retrieved (claim, passage) pair is then scored by all three detectors. This is the
+pipeline a vector-DB practitioner actually runs: dense top-$k$ followed by pairwise
+conflict-checking on the returned passages.
+
+Retrieval works as expected. Gold evidence is in the top-5 for $0.87$ of claims
+(recall@5) and at rank 1 for $0.76$ (recall@1). The detector behaviour on the
+\emph{retrieved} pairs is the interesting part (Table~\ref{tab:retrieval_realism}).
+The cross-encoder flags conflict on $0.43$ [$0.39, 0.48$] of retrieved pairs. The two
+LLM judges flag $0.09$ and $0.08$. Most retrieved passages for a given claim are
+topically related but not contradicting (the same Wikipedia article cluster), so a
+high flag rate here is a potential over-flagging surface in deployment, not a true
+detection win.
+On the subset where the retrieved passage is the FEVER gold evidence (where the
+SUPPORTS/REFUTES label gives a per-pair ground truth), all three detectors are within
+a few points of each other on precision-on-gold ($0.85$, $0.93$, $0.89$), so the
+cross-encoder's extra flags are coming from the non-gold retrieved pairs, not from a
+better gold signal. Latency separates the detectors by roughly $30\times$
+($0.16$\,s for the cross-encoder, $4$ to $5$\,s for the LLM judges). The cost ladder
+and the over-flagging ladder both push the same way on long real retrieved pairs as
+they did on the synthetic answer-bearing pairs (\S\ref{sec:answerbearing}) and the
+FEVER claim/evidence pairs (\S\ref{sec:fever}).
+
+\input{results/c4_retrieval_realism.tex}
+
+\section{Synthesis: an input-regime ladder}
+\label{sec:synthesis}
+The detector choice is not a single ladder but an \emph{input-regime} choice
+(Table~\ref{tab:synthesis}). The LLM-judge advantage is conditional on
+(a)~the presence of same-name / sense-trap failures (where answer-relevance dominates)
+and (b)~passage length (where the cross-encoder breaks down). On the cross-encoder's
+short native NLI distribution, it is competitive. The practical recommendation: use a
+question-conditioned LLM judge on \emph{answer-bearing} units (single-hop / claim-level).
+The cross-encoder is appropriate only for short native-distribution pairs where high
+recall matters more than the sense-trap precision risk.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabular}{@{}p{0.28\linewidth}p{0.32\linewidth}p{0.26\linewidth}@{}}
+\toprule
+Input regime & Best detector & Why \\
+\midrule
+Short curated, sense traps present (\S\ref{sec:answerrel}) &
+  \textsc{llm\_answer\_relevant} (P $1.00$) & only it is question-conditioned \\
+Short real claim--evidence (FEVER, \S\ref{sec:fever}) &
+  cross-enc $\approx$ \textsc{llm\_bare} on F1 & cross-encoder's home turf \\
+Real top-$k$ retrieved pairs (\S\ref{sec:retrieval}) &
+  LLM judges (flag $0.09$ vs $0.43$) & cross-enc over-fires on non-gold \\
+Long answer-bearing passages (\S\ref{sec:answerbearing}) &
+  LLM judges (F1 $0.89$) & cross-encoder length-capped \\
+Long multi-hop fragments (\S\ref{sec:realism}) &
+  ill-posed; scope to answer-bearing & pairwise conflict undefined \\
+\bottomrule
+\end{tabular}
+\caption{Detector choice depends on input regime. The LLM advantage is conditional on
+sense-trap presence and passage length; the cross-encoder remains useful for short
+native-distribution NLI.}
+\label{tab:synthesis}
+\end{table}
+
+\paragraph{Implications for vector-DB practitioners}
+A practitioner building a conflict-aware RAG pipeline on top of a vector store typically
+faces three concrete choices: which detector to deploy, on what unit of retrieved
+content, and how to interpret the resulting signal under model heterogeneity. The
+input-regime ladder (Table~\ref{tab:synthesis}) gives a direct recommendation for each.
+For pipelines that retrieve and conflict-check \emph{short claim/evidence pairs} (e.g.,
+fact-checking RAG and similar pairwise filters), the cross-encoder is the right
+default. It matches the LLM judge on F1 with much lower compute, and the sense-trap
+precision risk is small at sentence scale. For pipelines that retrieve
+\emph{paragraph-length} passages directly into the conflict-detection stage, the
+cross-encoder fails (F1 $0.18$ at our long-passage scale) and an LLM judge is required.
+Question-conditioning the LLM judge is then the precision-maximising default, unless
+the deployed LLM is small enough to fall into the capability regime
+(Table~\ref{tab:prompt_robustness}). For pipelines that retrieve \emph{multi-hop
+evidence fragments} (HotpotQA-style or graph-RAG-style sub-evidence), pairwise conflict
+detection is ill-posed on the retrieved units themselves. Conflict-aware logic should
+instead be deferred to a downstream synthesis step that operates on answer-bearing
+representations (\S\ref{sec:realism}).
+
+\section{Limitations}
+\label{sec:limitations}
+(1)~Single-author curated probes; no independent gold validation or inter-annotator
+agreement yet. (2)~Curated set is $n{=}63$. The orderings are statistically clean but
+absolute gaps need a larger probe set (and a held-out probe author) to tighten.
+(3)~The answer-bearing passages are LLM-generated. The FEVER validation is the
+real-corpus counterfactual but covers only short claim/evidence pairs, not long
+answer-bearing text on real corpora. (4)~The cross-encoder is fixed at
+DeBERTa-base-MNLI as the canonical representative of the pairwise NLI baseline used
+across the conflict-aware RAG
+literature~\citep{conflictrag2025,madamrag2025,contradetect2025}. Larger NLI models may
+shift the input-regime ladder. (5)~The 10-model sweep uses one prompt per condition;
+the prompt-robustness study (\S\ref{sec:promptrob}) covers only three variants on
+three models. (6)~We measure detector behaviour, not its downstream effect on RAG
+generation. A follow-up should propagate the sense-trap precision win into end-task
+faithfulness and abstention numbers. (7)~Query-conditioned NLI was concurrently
+formalised as a benchmark by~\citet{canby2025qnli}. Our contribution is the deployment
+audit, not the original technique; the audit is complementary to and extends their
+benchmark.
+
+\section{Conclusion}
+\label{sec:conclusion}
+We audit conflict detection on top of vector retrieval for RAG. Pairwise NLI is a
+brittle signal. A same-name sense trap systematically false-positives, and the failure
+is mechanistic (a missing question slot), not a model-capacity issue. The
+question-conditioned formulation of~\citet{canby2025qnli} closes the gap when deployed
+as an LLM-judge detector. We show the closure replicates across 8 of 10 open-weight
+families with non-overlapping CIs. We also show that the choice between the pairwise
+NLI cross-encoder commonly used in conflict-aware
+RAG~\citep{conflictrag2025,madamrag2025,contradetect2025} and an LLM judge is
+\emph{not} a global recommendation but an input-regime one. The cross-encoder wins on
+short claim/evidence pairs and is unusable on long passages. LLM judges are robust
+across lengths but conservative on recall. Small models cannot follow the
+question-conditioning prompt and regress. Multi-hop evidence fragments are simply
+ill-posed for pairwise judging. A small real top-$k$ retrieval check (over an embedded
+FEVER evidence corpus) reproduces the same cost and over-flagging ladder. We package
+the findings as a five-row deployment ladder for vector-DB-backed RAG practitioners,
+with bootstrap confidence intervals throughout. Code and result artefacts are released.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{../references}
+\end{document}

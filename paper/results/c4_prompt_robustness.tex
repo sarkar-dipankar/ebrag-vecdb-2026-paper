@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{llcccc}
+\toprule
+Model & Variant & Precision & F1 & Sense-trap acc & FP \\
+\midrule
+\texttt{gemma3:4b} & json & 0.51 & 0.68 & 0.00 & 25 \\
+\texttt{gemma3:4b} & plain & 0.67 & 0.75 & 0.58 & 11 \\
+\texttt{gemma3:4b} & fewshot & 0.62 & 0.76 & 0.42 & 16 \\
+\texttt{gemma3:12b} & json & 0.63 & 0.78 & 0.50 & 15 \\
+\texttt{gemma3:12b} & plain & 0.63 & 0.78 & 0.33 & 15 \\
+\texttt{gemma3:12b} & fewshot & 0.76 & 0.87 & 0.67 & 8 \\
+\texttt{gpt-oss:20b} & json & 0.96 & 0.98 & 0.92 & 1 \\
+\texttt{gpt-oss:20b} & plain & 0.93 & 0.96 & 0.83 & 2 \\
+\texttt{gpt-oss:20b} & fewshot & 1.00 & 1.00 & 1.00 & 0 \\
+\bottomrule
+\end{tabular}
+\caption{Prompt-robustness ablation ($n=63$). The small-Gemma regression is a
+\emph{capability} limit, not a format artefact: gemma3:4b emits clean parseable JSON
+that verbalises the right distinction and still mislabels (manual inspection); switching to
+a single-word format only shifts its threshold (FP $25\!\to\!11$); few-shot
+demonstration partially rescues gemma3:12b but not gemma3:4b.}
+\label{tab:prompt_robustness}
+\end{table*}

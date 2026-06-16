@@ -1,0 +1,2020 @@
+{
+  "experiment": "c4_detector_comparison",
+  "model": "gpt-oss:120b",
+  "n_probes": 63,
+  "by_detector": {
+    "cross_encoder_nli": {
+      "metrics": {
+        "n": 63,
+        "precision": 0.6842105263157895,
+        "recall": 1.0,
+        "f1": 0.8125000000000001,
+        "confusion": {
+          "tp": 26,
+          "fp": 12,
+          "fn": 0,
+          "tn": 25
+        },
+        "per_category_accuracy": {
+          "agreement": 1.0,
+          "explicit": 1.0,
+          "implicit": 1.0,
+          "negation_agreement": 0.5,
+          "numeric": 1.0,
+          "sense_trap": 0.6666666666666666,
+          "temporal": 1.0,
+          "topic_shift": 0.875,
+          "unit_agreement": 0.0
+        },
+        "topic_shift_false_positive_rate": 0.125,
+        "subtle_conflict_false_negative_rate": 0.0,
+        "precision_ci": [
+          0.5249702380952381,
+          0.8285714285714286
+        ],
+        "f1_ci": [
+          0.6884989754098362,
+          0.90625
+        ],
+        "sense_trap_acc_ci": [
+          0.375,
+          0.9166666666666666
+        ]
+      },
+      "records": [
+        {
+          "premise": "Paris is the capital of France.",
+          "hypothesis": "Paris is a small town in Lamar County, Texas.",
+          "question": "What is the capital of France?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9969520568847656
+        },
+        {
+          "premise": "Mercury is the closest planet to the Sun.",
+          "hypothesis": "Mercury is a chemical element with the symbol Hg.",
+          "question": "Which planet is closest to the Sun?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.9758820533752441
+        },
+        {
+          "premise": "Java is an island in Indonesia.",
+          "hypothesis": "Java is a widely used programming language.",
+          "question": "Where is the island of Java located?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.9746410846710205
+        },
+        {
+          "premise": "The Amazon is the largest tropical rainforest on Earth.",
+          "hypothesis": "Amazon is a multinational technology company.",
+          "question": "What is the largest tropical rainforest?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9602170586585999
+        },
+        {
+          "premise": "Cambridge is an English city home to a famous university.",
+          "hypothesis": "Cambridge is a city in Massachusetts, USA.",
+          "question": "Where is the University of Cambridge?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.803845226764679
+        },
+        {
+          "premise": "Turkey is a country spanning Eastern Europe and Western Asia.",
+          "hypothesis": "A turkey is a large bird commonly eaten at Thanksgiving.",
+          "question": "Where is the country of Turkey?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.9005565643310547
+        },
+        {
+          "premise": "Jordan is a country in the Middle East.",
+          "hypothesis": "Michael Jordan is a celebrated basketball player.",
+          "question": "Where is the country of Jordan?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.881967306137085
+        },
+        {
+          "premise": "Georgia is a country in the Caucasus region.",
+          "hypothesis": "Georgia is a state in the southeastern United States.",
+          "question": "Where is the country of Georgia?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.7245655655860901
+        },
+        {
+          "premise": "The phoenix is a mythical bird reborn from its own ashes.",
+          "hypothesis": "Phoenix is the capital of Arizona.",
+          "question": "What is the mythical bird that rises from ashes?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.9813463091850281
+        },
+        {
+          "premise": "An apple is an edible fruit that grows on a tree.",
+          "hypothesis": "Apple is a multinational technology company.",
+          "question": "What fruit grows on apple trees?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.9793353080749512
+        },
+        {
+          "premise": "A bass is a type of freshwater or marine fish.",
+          "hypothesis": "Bass refers to the low-frequency range in music.",
+          "question": "What kind of fish is a bass?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.5296504497528076
+        },
+        {
+          "premise": "Nikola Tesla was a pioneering electrical engineer and inventor.",
+          "hypothesis": "Tesla is an American electric-vehicle manufacturer.",
+          "question": "Who was the inventor Nikola Tesla?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.9590588808059692
+        },
+        {
+          "premise": "The capital of Australia is Canberra.",
+          "hypothesis": "The capital of Australia is Sydney.",
+          "question": "What is the capital of Australia?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9991493225097656
+        },
+        {
+          "premise": "Mount Everest is the tallest mountain on Earth.",
+          "hypothesis": "K2 is the tallest mountain on Earth.",
+          "question": "What is the tallest mountain on Earth?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.970952033996582
+        },
+        {
+          "premise": "The theory of general relativity was developed by Albert Einstein.",
+          "hypothesis": "The theory of general relativity was developed by Isaac Newton.",
+          "question": "Who developed general relativity?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.998957633972168
+        },
+        {
+          "premise": "The Mona Lisa was painted by Leonardo da Vinci.",
+          "hypothesis": "The Mona Lisa was painted by Michelangelo.",
+          "question": "Who painted the Mona Lisa?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9983628392219543
+        },
+        {
+          "premise": "The chemical symbol for sodium is Na.",
+          "hypothesis": "The chemical symbol for sodium is So.",
+          "question": "What is the chemical symbol for sodium?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9463465809822083
+        },
+        {
+          "premise": "The largest planet in the Solar System is Jupiter.",
+          "hypothesis": "The largest planet in the Solar System is Saturn.",
+          "question": "What is the largest planet in the Solar System?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9959359169006348
+        },
+        {
+          "premise": "The first President of the United States was George Washington.",
+          "hypothesis": "The first President of the United States was Thomas Jefferson.",
+          "question": "Who was the first President of the United States?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9979826211929321
+        },
+        {
+          "premise": "The currency of Japan is the yen.",
+          "hypothesis": "The currency of Japan is the won.",
+          "question": "What is the currency of Japan?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9898093938827515
+        },
+        {
+          "premise": "The longest river in the world is the Nile.",
+          "hypothesis": "The longest river in the world is the Amazon.",
+          "question": "What is the longest river in the world?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9989063739776611
+        },
+        {
+          "premise": "Penicillin was discovered by Alexander Fleming.",
+          "hypothesis": "Penicillin was discovered by Louis Pasteur.",
+          "question": "Who discovered penicillin?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9992432594299316
+        },
+        {
+          "premise": "The Eiffel Tower is 330 metres tall.",
+          "hypothesis": "The Eiffel Tower is 300 metres tall.",
+          "question": "How tall is the Eiffel Tower?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.8465795516967773
+        },
+        {
+          "premise": "Light is 300,000 kilometres per second.",
+          "hypothesis": "Light is 150,000 kilometres per second.",
+          "question": "What is the speed of light?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9910759925842285
+        },
+        {
+          "premise": "The adult human body is 206 bones.",
+          "hypothesis": "The adult human body is 250 bones.",
+          "question": "How many bones are in the adult human body?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9981746673583984
+        },
+        {
+          "premise": "Mount Kilimanjaro is 5,895 metres tall.",
+          "hypothesis": "Mount Kilimanjaro is 4,900 metres tall.",
+          "question": "How tall is Mount Kilimanjaro?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9741928577423096
+        },
+        {
+          "premise": "The Earth is about 12,742 kilometres in diameter.",
+          "hypothesis": "The Earth is about 9,000 kilometres in diameter.",
+          "question": "What is the diameter of the Earth?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9916075468063354
+        },
+        {
+          "premise": "The Great Pyramid of Giza is about 139 metres tall.",
+          "hypothesis": "The Great Pyramid of Giza is about 90 metres tall.",
+          "question": "How tall is the Great Pyramid of Giza?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9974116683006287
+        },
+        {
+          "premise": "The treaty was signed in 1919.",
+          "hypothesis": "The treaty was signed in 1920.",
+          "question": "When was the treaty signed?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.993423342704773
+        },
+        {
+          "premise": "World War II ended in 1945.",
+          "hypothesis": "World War II ended in 1939.",
+          "question": "When did World War II end?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9971327781677246
+        },
+        {
+          "premise": "The Berlin Wall fell in 1989.",
+          "hypothesis": "The Berlin Wall fell in 1991.",
+          "question": "When did the Berlin Wall fall?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9956034421920776
+        },
+        {
+          "premise": "The first Moon landing took place in 1969.",
+          "hypothesis": "The first Moon landing took place in 1972.",
+          "question": "When did the first Moon landing take place?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9986782670021057
+        },
+        {
+          "premise": "The French Revolution began in 1789.",
+          "hypothesis": "The French Revolution began in 1799.",
+          "question": "When did the French Revolution begin?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9970435500144958
+        },
+        {
+          "premise": "The company reported a profit in the most recent quarter.",
+          "hypothesis": "The company posted a loss in the most recent quarter.",
+          "question": "How did the company perform financially last quarter?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9992905855178833
+        },
+        {
+          "premise": "The patient's test result came back positive.",
+          "hypothesis": "The patient's test result came back negative.",
+          "question": "What was the patient's test result?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9996170997619629
+        },
+        {
+          "premise": "The bill was passed by the legislature.",
+          "hypothesis": "The bill was rejected by the legislature.",
+          "question": "What happened to the bill in the legislature?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9996106028556824
+        },
+        {
+          "premise": "The defendant was found guilty.",
+          "hypothesis": "The defendant was acquitted of all charges.",
+          "question": "What was the verdict for the defendant?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9995031356811523
+        },
+        {
+          "premise": "The experiment confirmed the hypothesis.",
+          "hypothesis": "The experiment refuted the hypothesis.",
+          "question": "What did the experiment conclude about the hypothesis?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9995253086090088
+        },
+        {
+          "premise": "Albert Einstein developed general relativity.",
+          "hypothesis": "General relativity was formulated by Einstein.",
+          "question": "Who developed general relativity?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.9955075979232788
+        },
+        {
+          "premise": "Gold's chemical symbol is Au.",
+          "hypothesis": "On the periodic table, gold is denoted Au.",
+          "question": "What is the chemical symbol for gold?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.7846157550811768
+        },
+        {
+          "premise": "The Pacific is the largest ocean on Earth.",
+          "hypothesis": "No ocean is larger than the Pacific.",
+          "question": "What is the largest ocean?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.9208498597145081
+        },
+        {
+          "premise": "Hamlet was written by William Shakespeare.",
+          "hypothesis": "Shakespeare is the author of Hamlet.",
+          "question": "Who wrote Hamlet?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.9946880340576172
+        },
+        {
+          "premise": "The Sahara is the largest hot desert.",
+          "hypothesis": "No hot desert is larger than the Sahara.",
+          "question": "What is the largest hot desert?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.8652786016464233
+        },
+        {
+          "premise": "Water is composed of hydrogen and oxygen.",
+          "hypothesis": "Water molecules consist of oxygen and hydrogen atoms.",
+          "question": "What is water composed of?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.9635670781135559
+        },
+        {
+          "premise": "Tokyo is the capital of Japan.",
+          "hypothesis": "Japan's capital city is Tokyo.",
+          "question": "What is the capital of Japan?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.9961398243904114
+        },
+        {
+          "premise": "The heart pumps blood through the body.",
+          "hypothesis": "Blood is circulated through the body by the heart.",
+          "question": "What organ pumps blood through the body?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.9963149428367615
+        },
+        {
+          "premise": "A marathon is 42.195 kilometres.",
+          "hypothesis": "A marathon is about 26.2 miles.",
+          "question": "How long is a marathon?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9825654029846191
+        },
+        {
+          "premise": "Water freezes is at 0 degrees Celsius.",
+          "hypothesis": "Water freezes is at 32 degrees Fahrenheit.",
+          "question": "At what temperature does water freeze?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9971492886543274
+        },
+        {
+          "premise": "The Great Wall of China is over 21,000 kilometres.",
+          "hypothesis": "The Great Wall of China is more than 13,000 miles.",
+          "question": "How long is the Great Wall of China?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9456217885017395
+        },
+        {
+          "premise": "The cruising altitude is about 11,000 metres.",
+          "hypothesis": "The cruising altitude is around 36,000 feet.",
+          "question": "What is a typical cruising altitude?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9984884262084961
+        },
+        {
+          "premise": "An adult's normal body temperature is about 37 degrees Celsius.",
+          "hypothesis": "An adult's normal body temperature is about 98.6 degrees Fahrenheit.",
+          "question": "What is normal body temperature?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9986806511878967
+        },
+        {
+          "premise": "It is not true that the Earth is flat.",
+          "hypothesis": "The Earth is round.",
+          "question": "What is the shape of the Earth?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.569879949092865
+        },
+        {
+          "premise": "It is false that the Sun orbits the Earth.",
+          "hypothesis": "The Earth orbits the Sun.",
+          "question": "What orbits what in the Solar System?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9829974174499512
+        },
+        {
+          "premise": "It is not the case that whales are fish.",
+          "hypothesis": "Whales are mammals.",
+          "question": "Are whales fish or mammals?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.44652605056762695
+        },
+        {
+          "premise": "It is incorrect that the heart is in the abdomen.",
+          "hypothesis": "The heart is located in the chest.",
+          "question": "Where is the heart located?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.673170268535614
+        },
+        {
+          "premise": "The capital of Australia is Canberra.",
+          "hypothesis": "Sydney is the most populous city in Australia.",
+          "question": "What is the capital of Australia?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.9402270317077637
+        },
+        {
+          "premise": "Photosynthesis occurs in the chloroplasts of plant cells.",
+          "hypothesis": "The French Revolution began in 1789.",
+          "question": "Where does photosynthesis occur?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.8703917860984802
+        },
+        {
+          "premise": "Mitochondria produce ATP in cells.",
+          "hypothesis": "Ribosomes synthesize proteins in cells.",
+          "question": "What produces ATP in cells?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.6693472266197205
+        },
+        {
+          "premise": "Canberra is the capital of Australia.",
+          "hypothesis": "Australia is both a country and a continent.",
+          "question": "What is the capital of Australia?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.8461364507675171
+        },
+        {
+          "premise": "Water boils at 100 degrees Celsius at sea level.",
+          "hypothesis": "Ice is the solid form of water.",
+          "question": "At what temperature does water boil at sea level?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.5319265127182007
+        },
+        {
+          "premise": "The Nile flows through northeastern Africa.",
+          "hypothesis": "The Amazon rainforest is in South America.",
+          "question": "Through which region does the Nile flow?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.9381255507469177
+        },
+        {
+          "premise": "Shakespeare was an English playwright.",
+          "hypothesis": "Mozart was an Austrian composer.",
+          "question": "What was Shakespeare's profession?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.585615336894989
+        },
+        {
+          "premise": "The speed of sound in air is about 343 metres per second.",
+          "hypothesis": "Sound cannot travel through a vacuum.",
+          "question": "What is the speed of sound in air?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.6121764779090881
+        }
+      ]
+    },
+    "llm_bare": {
+      "metrics": {
+        "n": 63,
+        "precision": 0.896551724137931,
+        "recall": 1.0,
+        "f1": 0.9454545454545454,
+        "confusion": {
+          "tp": 26,
+          "fp": 3,
+          "fn": 0,
+          "tn": 34
+        },
+        "per_category_accuracy": {
+          "agreement": 1.0,
+          "explicit": 1.0,
+          "implicit": 1.0,
+          "negation_agreement": 1.0,
+          "numeric": 1.0,
+          "sense_trap": 0.75,
+          "temporal": 1.0,
+          "topic_shift": 1.0,
+          "unit_agreement": 1.0
+        },
+        "topic_shift_false_positive_rate": 0.0,
+        "subtle_conflict_false_negative_rate": 0.0,
+        "precision_ci": [
+          0.7741935483870968,
+          1.0
+        ],
+        "f1_ci": [
+          0.8727272727272727,
+          1.0
+        ],
+        "sense_trap_acc_ci": [
+          0.4613636363636364,
+          1.0
+        ]
+      },
+      "records": [
+        {
+          "premise": "Paris is the capital of France.",
+          "hypothesis": "Paris is a small town in Lamar County, Texas.",
+          "question": "What is the capital of France?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Mercury is the closest planet to the Sun.",
+          "hypothesis": "Mercury is a chemical element with the symbol Hg.",
+          "question": "Which planet is closest to the Sun?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.96
+        },
+        {
+          "premise": "Java is an island in Indonesia.",
+          "hypothesis": "Java is a widely used programming language.",
+          "question": "Where is the island of Java located?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.96
+        },
+        {
+          "premise": "The Amazon is the largest tropical rainforest on Earth.",
+          "hypothesis": "Amazon is a multinational technology company.",
+          "question": "What is the largest tropical rainforest?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "Cambridge is an English city home to a famous university.",
+          "hypothesis": "Cambridge is a city in Massachusetts, USA.",
+          "question": "Where is the University of Cambridge?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Turkey is a country spanning Eastern Europe and Western Asia.",
+          "hypothesis": "A turkey is a large bird commonly eaten at Thanksgiving.",
+          "question": "Where is the country of Turkey?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "Jordan is a country in the Middle East.",
+          "hypothesis": "Michael Jordan is a celebrated basketball player.",
+          "question": "Where is the country of Jordan?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Georgia is a country in the Caucasus region.",
+          "hypothesis": "Georgia is a state in the southeastern United States.",
+          "question": "Where is the country of Georgia?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The phoenix is a mythical bird reborn from its own ashes.",
+          "hypothesis": "Phoenix is the capital of Arizona.",
+          "question": "What is the mythical bird that rises from ashes?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "An apple is an edible fruit that grows on a tree.",
+          "hypothesis": "Apple is a multinational technology company.",
+          "question": "What fruit grows on apple trees?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "A bass is a type of freshwater or marine fish.",
+          "hypothesis": "Bass refers to the low-frequency range in music.",
+          "question": "What kind of fish is a bass?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.96
+        },
+        {
+          "premise": "Nikola Tesla was a pioneering electrical engineer and inventor.",
+          "hypothesis": "Tesla is an American electric-vehicle manufacturer.",
+          "question": "Who was the inventor Nikola Tesla?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.94
+        },
+        {
+          "premise": "The capital of Australia is Canberra.",
+          "hypothesis": "The capital of Australia is Sydney.",
+          "question": "What is the capital of Australia?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Mount Everest is the tallest mountain on Earth.",
+          "hypothesis": "K2 is the tallest mountain on Earth.",
+          "question": "What is the tallest mountain on Earth?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The theory of general relativity was developed by Albert Einstein.",
+          "hypothesis": "The theory of general relativity was developed by Isaac Newton.",
+          "question": "Who developed general relativity?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Mona Lisa was painted by Leonardo da Vinci.",
+          "hypothesis": "The Mona Lisa was painted by Michelangelo.",
+          "question": "Who painted the Mona Lisa?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The chemical symbol for sodium is Na.",
+          "hypothesis": "The chemical symbol for sodium is So.",
+          "question": "What is the chemical symbol for sodium?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The largest planet in the Solar System is Jupiter.",
+          "hypothesis": "The largest planet in the Solar System is Saturn.",
+          "question": "What is the largest planet in the Solar System?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The first President of the United States was George Washington.",
+          "hypothesis": "The first President of the United States was Thomas Jefferson.",
+          "question": "Who was the first President of the United States?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The currency of Japan is the yen.",
+          "hypothesis": "The currency of Japan is the won.",
+          "question": "What is the currency of Japan?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The longest river in the world is the Nile.",
+          "hypothesis": "The longest river in the world is the Amazon.",
+          "question": "What is the longest river in the world?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Penicillin was discovered by Alexander Fleming.",
+          "hypothesis": "Penicillin was discovered by Louis Pasteur.",
+          "question": "Who discovered penicillin?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Eiffel Tower is 330 metres tall.",
+          "hypothesis": "The Eiffel Tower is 300 metres tall.",
+          "question": "How tall is the Eiffel Tower?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Light is 300,000 kilometres per second.",
+          "hypothesis": "Light is 150,000 kilometres per second.",
+          "question": "What is the speed of light?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The adult human body is 206 bones.",
+          "hypothesis": "The adult human body is 250 bones.",
+          "question": "How many bones are in the adult human body?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Mount Kilimanjaro is 5,895 metres tall.",
+          "hypothesis": "Mount Kilimanjaro is 4,900 metres tall.",
+          "question": "How tall is Mount Kilimanjaro?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Earth is about 12,742 kilometres in diameter.",
+          "hypothesis": "The Earth is about 9,000 kilometres in diameter.",
+          "question": "What is the diameter of the Earth?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.97
+        },
+        {
+          "premise": "The Great Pyramid of Giza is about 139 metres tall.",
+          "hypothesis": "The Great Pyramid of Giza is about 90 metres tall.",
+          "question": "How tall is the Great Pyramid of Giza?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The treaty was signed in 1919.",
+          "hypothesis": "The treaty was signed in 1920.",
+          "question": "When was the treaty signed?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "World War II ended in 1945.",
+          "hypothesis": "World War II ended in 1939.",
+          "question": "When did World War II end?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Berlin Wall fell in 1989.",
+          "hypothesis": "The Berlin Wall fell in 1991.",
+          "question": "When did the Berlin Wall fall?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The first Moon landing took place in 1969.",
+          "hypothesis": "The first Moon landing took place in 1972.",
+          "question": "When did the first Moon landing take place?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The French Revolution began in 1789.",
+          "hypothesis": "The French Revolution began in 1799.",
+          "question": "When did the French Revolution begin?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The company reported a profit in the most recent quarter.",
+          "hypothesis": "The company posted a loss in the most recent quarter.",
+          "question": "How did the company perform financially last quarter?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The patient's test result came back positive.",
+          "hypothesis": "The patient's test result came back negative.",
+          "question": "What was the patient's test result?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The bill was passed by the legislature.",
+          "hypothesis": "The bill was rejected by the legislature.",
+          "question": "What happened to the bill in the legislature?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The defendant was found guilty.",
+          "hypothesis": "The defendant was acquitted of all charges.",
+          "question": "What was the verdict for the defendant?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The experiment confirmed the hypothesis.",
+          "hypothesis": "The experiment refuted the hypothesis.",
+          "question": "What did the experiment conclude about the hypothesis?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Albert Einstein developed general relativity.",
+          "hypothesis": "General relativity was formulated by Einstein.",
+          "question": "Who developed general relativity?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Gold's chemical symbol is Au.",
+          "hypothesis": "On the periodic table, gold is denoted Au.",
+          "question": "What is the chemical symbol for gold?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Pacific is the largest ocean on Earth.",
+          "hypothesis": "No ocean is larger than the Pacific.",
+          "question": "What is the largest ocean?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Hamlet was written by William Shakespeare.",
+          "hypothesis": "Shakespeare is the author of Hamlet.",
+          "question": "Who wrote Hamlet?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Sahara is the largest hot desert.",
+          "hypothesis": "No hot desert is larger than the Sahara.",
+          "question": "What is the largest hot desert?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Water is composed of hydrogen and oxygen.",
+          "hypothesis": "Water molecules consist of oxygen and hydrogen atoms.",
+          "question": "What is water composed of?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Tokyo is the capital of Japan.",
+          "hypothesis": "Japan's capital city is Tokyo.",
+          "question": "What is the capital of Japan?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The heart pumps blood through the body.",
+          "hypothesis": "Blood is circulated through the body by the heart.",
+          "question": "What organ pumps blood through the body?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "A marathon is 42.195 kilometres.",
+          "hypothesis": "A marathon is about 26.2 miles.",
+          "question": "How long is a marathon?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Water freezes is at 0 degrees Celsius.",
+          "hypothesis": "Water freezes is at 32 degrees Fahrenheit.",
+          "question": "At what temperature does water freeze?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Great Wall of China is over 21,000 kilometres.",
+          "hypothesis": "The Great Wall of China is more than 13,000 miles.",
+          "question": "How long is the Great Wall of China?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.97
+        },
+        {
+          "premise": "The cruising altitude is about 11,000 metres.",
+          "hypothesis": "The cruising altitude is around 36,000 feet.",
+          "question": "What is a typical cruising altitude?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "An adult's normal body temperature is about 37 degrees Celsius.",
+          "hypothesis": "An adult's normal body temperature is about 98.6 degrees Fahrenheit.",
+          "question": "What is normal body temperature?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "entailment",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "It is not true that the Earth is flat.",
+          "hypothesis": "The Earth is round.",
+          "question": "What is the shape of the Earth?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.92
+        },
+        {
+          "premise": "It is false that the Sun orbits the Earth.",
+          "hypothesis": "The Earth orbits the Sun.",
+          "question": "What orbits what in the Solar System?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.95
+        },
+        {
+          "premise": "It is not the case that whales are fish.",
+          "hypothesis": "Whales are mammals.",
+          "question": "Are whales fish or mammals?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.95
+        },
+        {
+          "premise": "It is incorrect that the heart is in the abdomen.",
+          "hypothesis": "The heart is located in the chest.",
+          "question": "Where is the heart located?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.86
+        },
+        {
+          "premise": "The capital of Australia is Canberra.",
+          "hypothesis": "Sydney is the most populous city in Australia.",
+          "question": "What is the capital of Australia?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.93
+        },
+        {
+          "premise": "Photosynthesis occurs in the chloroplasts of plant cells.",
+          "hypothesis": "The French Revolution began in 1789.",
+          "question": "Where does photosynthesis occur?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Mitochondria produce ATP in cells.",
+          "hypothesis": "Ribosomes synthesize proteins in cells.",
+          "question": "What produces ATP in cells?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.96
+        },
+        {
+          "premise": "Canberra is the capital of Australia.",
+          "hypothesis": "Australia is both a country and a continent.",
+          "question": "What is the capital of Australia?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.9
+        },
+        {
+          "premise": "Water boils at 100 degrees Celsius at sea level.",
+          "hypothesis": "Ice is the solid form of water.",
+          "question": "At what temperature does water boil at sea level?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "The Nile flows through northeastern Africa.",
+          "hypothesis": "The Amazon rainforest is in South America.",
+          "question": "Through which region does the Nile flow?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Shakespeare was an English playwright.",
+          "hypothesis": "Mozart was an Austrian composer.",
+          "question": "What was Shakespeare's profession?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.96
+        },
+        {
+          "premise": "The speed of sound in air is about 343 metres per second.",
+          "hypothesis": "Sound cannot travel through a vacuum.",
+          "question": "What is the speed of sound in air?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.78
+        }
+      ]
+    },
+    "llm_answer_relevant": {
+      "metrics": {
+        "n": 63,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "confusion": {
+          "tp": 26,
+          "fp": 0,
+          "fn": 0,
+          "tn": 37
+        },
+        "per_category_accuracy": {
+          "agreement": 1.0,
+          "explicit": 1.0,
+          "implicit": 1.0,
+          "negation_agreement": 1.0,
+          "numeric": 1.0,
+          "sense_trap": 1.0,
+          "temporal": 1.0,
+          "topic_shift": 1.0,
+          "unit_agreement": 1.0
+        },
+        "topic_shift_false_positive_rate": 0.0,
+        "subtle_conflict_false_negative_rate": 0.0,
+        "precision_ci": [
+          1.0,
+          1.0
+        ],
+        "f1_ci": [
+          1.0,
+          1.0
+        ],
+        "sense_trap_acc_ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "records": [
+        {
+          "premise": "Paris is the capital of France.",
+          "hypothesis": "Paris is a small town in Lamar County, Texas.",
+          "question": "What is the capital of France?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "Mercury is the closest planet to the Sun.",
+          "hypothesis": "Mercury is a chemical element with the symbol Hg.",
+          "question": "Which planet is closest to the Sun?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Java is an island in Indonesia.",
+          "hypothesis": "Java is a widely used programming language.",
+          "question": "Where is the island of Java located?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Amazon is the largest tropical rainforest on Earth.",
+          "hypothesis": "Amazon is a multinational technology company.",
+          "question": "What is the largest tropical rainforest?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Cambridge is an English city home to a famous university.",
+          "hypothesis": "Cambridge is a city in Massachusetts, USA.",
+          "question": "Where is the University of Cambridge?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.92
+        },
+        {
+          "premise": "Turkey is a country spanning Eastern Europe and Western Asia.",
+          "hypothesis": "A turkey is a large bird commonly eaten at Thanksgiving.",
+          "question": "Where is the country of Turkey?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.97
+        },
+        {
+          "premise": "Jordan is a country in the Middle East.",
+          "hypothesis": "Michael Jordan is a celebrated basketball player.",
+          "question": "Where is the country of Jordan?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Georgia is a country in the Caucasus region.",
+          "hypothesis": "Georgia is a state in the southeastern United States.",
+          "question": "Where is the country of Georgia?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The phoenix is a mythical bird reborn from its own ashes.",
+          "hypothesis": "Phoenix is the capital of Arizona.",
+          "question": "What is the mythical bird that rises from ashes?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "An apple is an edible fruit that grows on a tree.",
+          "hypothesis": "Apple is a multinational technology company.",
+          "question": "What fruit grows on apple trees?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.97
+        },
+        {
+          "premise": "A bass is a type of freshwater or marine fish.",
+          "hypothesis": "Bass refers to the low-frequency range in music.",
+          "question": "What kind of fish is a bass?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.97
+        },
+        {
+          "premise": "Nikola Tesla was a pioneering electrical engineer and inventor.",
+          "hypothesis": "Tesla is an American electric-vehicle manufacturer.",
+          "question": "Who was the inventor Nikola Tesla?",
+          "category": "sense_trap",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.96
+        },
+        {
+          "premise": "The capital of Australia is Canberra.",
+          "hypothesis": "The capital of Australia is Sydney.",
+          "question": "What is the capital of Australia?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Mount Everest is the tallest mountain on Earth.",
+          "hypothesis": "K2 is the tallest mountain on Earth.",
+          "question": "What is the tallest mountain on Earth?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The theory of general relativity was developed by Albert Einstein.",
+          "hypothesis": "The theory of general relativity was developed by Isaac Newton.",
+          "question": "Who developed general relativity?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Mona Lisa was painted by Leonardo da Vinci.",
+          "hypothesis": "The Mona Lisa was painted by Michelangelo.",
+          "question": "Who painted the Mona Lisa?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The chemical symbol for sodium is Na.",
+          "hypothesis": "The chemical symbol for sodium is So.",
+          "question": "What is the chemical symbol for sodium?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The largest planet in the Solar System is Jupiter.",
+          "hypothesis": "The largest planet in the Solar System is Saturn.",
+          "question": "What is the largest planet in the Solar System?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The first President of the United States was George Washington.",
+          "hypothesis": "The first President of the United States was Thomas Jefferson.",
+          "question": "Who was the first President of the United States?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The currency of Japan is the yen.",
+          "hypothesis": "The currency of Japan is the won.",
+          "question": "What is the currency of Japan?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The longest river in the world is the Nile.",
+          "hypothesis": "The longest river in the world is the Amazon.",
+          "question": "What is the longest river in the world?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Penicillin was discovered by Alexander Fleming.",
+          "hypothesis": "Penicillin was discovered by Louis Pasteur.",
+          "question": "Who discovered penicillin?",
+          "category": "explicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Eiffel Tower is 330 metres tall.",
+          "hypothesis": "The Eiffel Tower is 300 metres tall.",
+          "question": "How tall is the Eiffel Tower?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Light is 300,000 kilometres per second.",
+          "hypothesis": "Light is 150,000 kilometres per second.",
+          "question": "What is the speed of light?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The adult human body is 206 bones.",
+          "hypothesis": "The adult human body is 250 bones.",
+          "question": "How many bones are in the adult human body?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Mount Kilimanjaro is 5,895 metres tall.",
+          "hypothesis": "Mount Kilimanjaro is 4,900 metres tall.",
+          "question": "How tall is Mount Kilimanjaro?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Earth is about 12,742 kilometres in diameter.",
+          "hypothesis": "The Earth is about 9,000 kilometres in diameter.",
+          "question": "What is the diameter of the Earth?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Great Pyramid of Giza is about 139 metres tall.",
+          "hypothesis": "The Great Pyramid of Giza is about 90 metres tall.",
+          "question": "How tall is the Great Pyramid of Giza?",
+          "category": "numeric",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The treaty was signed in 1919.",
+          "hypothesis": "The treaty was signed in 1920.",
+          "question": "When was the treaty signed?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "World War II ended in 1945.",
+          "hypothesis": "World War II ended in 1939.",
+          "question": "When did World War II end?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Berlin Wall fell in 1989.",
+          "hypothesis": "The Berlin Wall fell in 1991.",
+          "question": "When did the Berlin Wall fall?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The first Moon landing took place in 1969.",
+          "hypothesis": "The first Moon landing took place in 1972.",
+          "question": "When did the first Moon landing take place?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The French Revolution began in 1789.",
+          "hypothesis": "The French Revolution began in 1799.",
+          "question": "When did the French Revolution begin?",
+          "category": "temporal",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The company reported a profit in the most recent quarter.",
+          "hypothesis": "The company posted a loss in the most recent quarter.",
+          "question": "How did the company perform financially last quarter?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The patient's test result came back positive.",
+          "hypothesis": "The patient's test result came back negative.",
+          "question": "What was the patient's test result?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The bill was passed by the legislature.",
+          "hypothesis": "The bill was rejected by the legislature.",
+          "question": "What happened to the bill in the legislature?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The defendant was found guilty.",
+          "hypothesis": "The defendant was acquitted of all charges.",
+          "question": "What was the verdict for the defendant?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The experiment confirmed the hypothesis.",
+          "hypothesis": "The experiment refuted the hypothesis.",
+          "question": "What did the experiment conclude about the hypothesis?",
+          "category": "implicit",
+          "gold_conflict": true,
+          "predicted_label": "contradiction",
+          "predicted_conflict": true,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Albert Einstein developed general relativity.",
+          "hypothesis": "General relativity was formulated by Einstein.",
+          "question": "Who developed general relativity?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Gold's chemical symbol is Au.",
+          "hypothesis": "On the periodic table, gold is denoted Au.",
+          "question": "What is the chemical symbol for gold?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Pacific is the largest ocean on Earth.",
+          "hypothesis": "No ocean is larger than the Pacific.",
+          "question": "What is the largest ocean?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Hamlet was written by William Shakespeare.",
+          "hypothesis": "Shakespeare is the author of Hamlet.",
+          "question": "Who wrote Hamlet?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Sahara is the largest hot desert.",
+          "hypothesis": "No hot desert is larger than the Sahara.",
+          "question": "What is the largest hot desert?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Water is composed of hydrogen and oxygen.",
+          "hypothesis": "Water molecules consist of oxygen and hydrogen atoms.",
+          "question": "What is water composed of?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Tokyo is the capital of Japan.",
+          "hypothesis": "Japan's capital city is Tokyo.",
+          "question": "What is the capital of Japan?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The heart pumps blood through the body.",
+          "hypothesis": "Blood is circulated through the body by the heart.",
+          "question": "What organ pumps blood through the body?",
+          "category": "agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "A marathon is 42.195 kilometres.",
+          "hypothesis": "A marathon is about 26.2 miles.",
+          "question": "How long is a marathon?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Water freezes is at 0 degrees Celsius.",
+          "hypothesis": "Water freezes is at 32 degrees Fahrenheit.",
+          "question": "At what temperature does water freeze?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Great Wall of China is over 21,000 kilometres.",
+          "hypothesis": "The Great Wall of China is more than 13,000 miles.",
+          "question": "How long is the Great Wall of China?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.92
+        },
+        {
+          "premise": "The cruising altitude is about 11,000 metres.",
+          "hypothesis": "The cruising altitude is around 36,000 feet.",
+          "question": "What is a typical cruising altitude?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.96
+        },
+        {
+          "premise": "An adult's normal body temperature is about 37 degrees Celsius.",
+          "hypothesis": "An adult's normal body temperature is about 98.6 degrees Fahrenheit.",
+          "question": "What is normal body temperature?",
+          "category": "unit_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "It is not true that the Earth is flat.",
+          "hypothesis": "The Earth is round.",
+          "question": "What is the shape of the Earth?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "It is false that the Sun orbits the Earth.",
+          "hypothesis": "The Earth orbits the Sun.",
+          "question": "What orbits what in the Solar System?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.92
+        },
+        {
+          "premise": "It is not the case that whales are fish.",
+          "hypothesis": "Whales are mammals.",
+          "question": "Are whales fish or mammals?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.96
+        },
+        {
+          "premise": "It is incorrect that the heart is in the abdomen.",
+          "hypothesis": "The heart is located in the chest.",
+          "question": "Where is the heart located?",
+          "category": "negation_agreement",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.98
+        },
+        {
+          "premise": "The capital of Australia is Canberra.",
+          "hypothesis": "Sydney is the most populous city in Australia.",
+          "question": "What is the capital of Australia?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.96
+        },
+        {
+          "premise": "Photosynthesis occurs in the chloroplasts of plant cells.",
+          "hypothesis": "The French Revolution began in 1789.",
+          "question": "Where does photosynthesis occur?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Mitochondria produce ATP in cells.",
+          "hypothesis": "Ribosomes synthesize proteins in cells.",
+          "question": "What produces ATP in cells?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Canberra is the capital of Australia.",
+          "hypothesis": "Australia is both a country and a continent.",
+          "question": "What is the capital of Australia?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Water boils at 100 degrees Celsius at sea level.",
+          "hypothesis": "Ice is the solid form of water.",
+          "question": "At what temperature does water boil at sea level?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The Nile flows through northeastern Africa.",
+          "hypothesis": "The Amazon rainforest is in South America.",
+          "question": "Through which region does the Nile flow?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "Shakespeare was an English playwright.",
+          "hypothesis": "Mozart was an Austrian composer.",
+          "question": "What was Shakespeare's profession?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        },
+        {
+          "premise": "The speed of sound in air is about 343 metres per second.",
+          "hypothesis": "Sound cannot travel through a vacuum.",
+          "question": "What is the speed of sound in air?",
+          "category": "topic_shift",
+          "gold_conflict": false,
+          "predicted_label": "neutral",
+          "predicted_conflict": false,
+          "confidence": 0.99
+        }
+      ]
+    }
+  }
+}

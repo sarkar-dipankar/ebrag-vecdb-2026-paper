@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+Detector & Precision (95\% CI) & Recall (95\% CI) & F1 \\
+\midrule
+cross\_encoder\_nli & 1.00 [1.00,1.00] & 0.50 [0.25,0.78] & 0.67 \\
+llm\_bare & 0.92 [0.75,1.00] & 0.86 [0.65,1.00] & 0.89 \\
+llm\_answer\_relevant & 1.00 [1.00,1.00] & 0.79 [0.55,1.00] & 0.88 \\
+\bottomrule
+\end{tabular}
+\caption{Long answer-bearing passage pairs ($n=42$:
+14 conflict / 14 agreement /
+14 topic-shift, all 3--4 sentence LLM-written passages asserting a
+specific answer). LLM judges dominate F1; the cross-encoder regains perfect precision but
+length caps recall.}
+\label{tab:answer_bearing}
+\end{table}
