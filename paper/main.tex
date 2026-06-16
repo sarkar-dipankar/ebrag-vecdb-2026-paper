@@ -452,42 +452,61 @@ representations (\S\ref{sec:realism}).
 
 \section{Limitations}
 \label{sec:limitations}
-(1)~Single-author curated probes; no independent gold validation or inter-annotator
-agreement yet. (2)~Curated set is $n{=}63$. The orderings are statistically clean but
-absolute gaps need a larger probe set (and a held-out probe author) to tighten.
-(3)~The answer-bearing passages are LLM-generated. The FEVER validation is the
-real-corpus counterfactual but covers only short claim/evidence pairs, not long
-answer-bearing text on real corpora. (4)~The cross-encoder is fixed at
-DeBERTa-base-MNLI as the canonical representative of the pairwise NLI baseline used
-across the conflict-aware RAG
-literature~\citep{conflictrag2025,madamrag2025,contradetect2025}. Larger NLI models may
-shift the input-regime ladder. (5)~The 10-model sweep uses one prompt per condition;
-the prompt-robustness study (\S\ref{sec:promptrob}) covers only three variants on
-three models. (6)~We measure detector behaviour, not its downstream effect on RAG
-generation. A follow-up should propagate the sense-trap precision win into end-task
-faithfulness and abstention numbers. (7)~Query-conditioned NLI was concurrently
-formalised as a benchmark by~\citet{canby2025qnli}. Our contribution is the deployment
-audit, not the original technique; the audit is complementary to and extends their
-benchmark.
+We group the audit's limitations by the dimension they affect.
+
+\paragraph{Probe set scale and validation}
+The curated probe set is $n{=}63$ and was built by a single author with no independent
+inter-annotator agreement. Bootstrap CIs make the orderings statistically clean, but
+the absolute gaps need a larger, held-out-author probe set to tighten. FEVER
+($n{=}100$) provides the real-corpus external check.
+
+\paragraph{Coverage of input regimes}
+The long answer-bearing passages are LLM-written. FEVER covers short claim/evidence
+pairs on real text but not long answer-bearing text on real corpora; closing that
+specific gap would need a hand-labelled long-passage benchmark. The retrieval-realism
+check (\S\ref{sec:retrieval}) uses a 100-passage embedded corpus, sufficient for a
+deployment sanity check on flag rate and latency but not for realistic vector-DB scale.
+
+\paragraph{Scope of what the audit varies}
+The cross-encoder is fixed at DeBERTa-base-MNLI as the canonical pairwise NLI
+representative used across conflict-aware
+RAG~\citep{conflictrag2025,madamrag2025,contradetect2025}; larger NLI models may shift
+the input-regime ladder. The 10-model LLM sweep uses one prompt per condition, and the
+prompt-robustness study (\S\ref{sec:promptrob}) covers only three variants on three
+models, so prompt-engineering rescue of small models is plausibly under-explored.
+
+\paragraph{Downstream effect on RAG generation}
+We measure detector behaviour, not the downstream effect of detector choice on RAG
+generation quality. A natural follow-up is to propagate the sense-trap precision win
+into end-task faithfulness and abstention numbers.
+
+\paragraph{Concurrent work}
+Query-conditioned NLI was concurrently formalised as a benchmark by~\citet{canby2025qnli}.
+Our contribution is the deployment audit, not the original technique; the audit is
+complementary to and extends their benchmark.
 
 \section{Conclusion}
 \label{sec:conclusion}
 We audit conflict detection on top of vector retrieval for RAG. Pairwise NLI is a
-brittle signal. A same-name sense trap systematically false-positives, and the failure
+brittle signal: a same-name sense trap systematically false-positives, and the failure
 is mechanistic (a missing question slot), not a model-capacity issue. The
 question-conditioned formulation of~\citet{canby2025qnli} closes the gap when deployed
-as an LLM-judge detector. We show the closure replicates across 8 of 10 open-weight
-families with non-overlapping CIs. We also show that the choice between the pairwise
-NLI cross-encoder commonly used in conflict-aware
+as an LLM-judge detector, and the closure replicates across 8 of 10 open-weight
+families with non-overlapping CIs.
+
+The choice between the pairwise NLI cross-encoder commonly used in conflict-aware
 RAG~\citep{conflictrag2025,madamrag2025,contradetect2025} and an LLM judge is
-\emph{not} a global recommendation but an input-regime one. The cross-encoder wins on
+\emph{not a global recommendation but an input-regime one}. The cross-encoder wins on
 short claim/evidence pairs and is unusable on long passages. LLM judges are robust
 across lengths but conservative on recall. Small models cannot follow the
 question-conditioning prompt and regress. Multi-hop evidence fragments are simply
-ill-posed for pairwise judging. A small real top-$k$ retrieval check (over an embedded
-FEVER evidence corpus) reproduces the same cost and over-flagging ladder. We package
-the findings as a five-row deployment ladder for vector-DB-backed RAG practitioners,
-with bootstrap confidence intervals throughout. Code and result artefacts are released.
+ill-posed for pairwise judging. A small real top-$k$ retrieval check over an embedded
+FEVER evidence corpus reproduces the same cost and over-flagging ladder on real
+retrieved pairs.
+
+We package the findings as a five-row deployment ladder for vector-DB-backed RAG
+practitioners, with bootstrap confidence intervals throughout. Code and result
+artefacts are released.
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{../references}
